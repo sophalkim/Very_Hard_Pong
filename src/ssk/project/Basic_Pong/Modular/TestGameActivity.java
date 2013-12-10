@@ -9,13 +9,13 @@ import android.support.v4.app.FragmentActivity;
 
 public class TestGameActivity extends FragmentActivity {
 	
-	SubGameLevel gameView;
+	SubLevel gameView;
 	MediaPlayer mp;	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(gameView = new SubGameLevel(this));
+		setContentView(gameView = new SubLevel(this));
 		
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		mp = MediaPlayer.create(this, R.raw.volcano_music);

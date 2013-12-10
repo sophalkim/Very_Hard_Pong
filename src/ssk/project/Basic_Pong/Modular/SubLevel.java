@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
-public class SubGameLevel extends BaseLevelView {
+public class SubLevel extends BaseLevel {
 
 	Ball b2;
 	boolean secondBallStarting = false;
@@ -19,7 +19,7 @@ public class SubGameLevel extends BaseLevelView {
 	boolean isPowerUpClicked = false;
 	boolean isPowerUpScaling = false;
 	
-	public SubGameLevel(Context context) {
+	public SubLevel(Context context) {
 		super(context);
 	}
 	

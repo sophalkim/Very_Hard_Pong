@@ -1,7 +1,5 @@
 package ssk.project.Basic_Pong.Modular;
 
-import java.util.Random;
-
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,27 +7,25 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class BaseLevelView extends SurfaceView implements SurfaceHolder.Callback {
+public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
 	int screenW;
 	int screenH;
 	Bitmap bgBitmap;
-	BaseGameThread thread;
+	BaseThread thread;
 	Paddle p;
 	Ball b;
 	int ballHits = 0;
 	Paint paint = new Paint();
 	Paint goalPaint = new Paint();
 	boolean pause = false;
-	Random r = new Random();
 	Context context;
 	
-	public BaseLevelView(Context context) {
+	public BaseLevel(Context context) {
 		super(context);
 		this.context = context;
 		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.volcano);
@@ -48,36 +44,8 @@ public class BaseLevelView extends SurfaceView implements SurfaceHolder.Callback
 		screenW = w;
 		screenH = h;
 		bgBitmap = Bitmap.createScaledBitmap(bgBitmap, screenW, screenH, false);
-		initBall();
-		initPaddle();
-	}
-	
-	public void initPaddle() {
-		p = new Paddle();
-		p.bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lava_paddle);
-		p.bitmap = Bitmap.createScaledBitmap(p.bitmap, screenW / 4, screenH / 40, false);
-		p.x = screenW / 2 - (p.bitmap.getWidth() / 2);
-		p.y = screenH - screenH / 10;
-		p.w = p.bitmap.getWidth();
-		p.h = p.bitmap.getHeight();
-		p.rect = new Rect(p.x, p.y, p.x + p.w, p.y + p.h);
-	}
-	
-	public void initBall() {
-		b = new Ball(context);
-		b.bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.metal_ball);
-		b.bitmap = Bitmap.createScaledBitmap(b.bitmap, screenW / 15, screenH / 20, false);
-		b.w = b.bitmap.getWidth();
-		b.h = b.bitmap.getHeight();
-		b.angle = 0;
-		b.x = (int) (screenW / 2) - (b.w / 2);
-		b.y = 0;
-		b.vY = screenH / 100;
-		if (r.nextInt(2) == 1) {
-			b.vX = (screenW / 100);
-		} else {
-			b.vX = -1 * (screenW / 100);
-		}
+		b = new Ball(this, context, screenW, screenH);
+		p = new Paddle(this, context, screenW, screenH);
 	}
 	
 	@Override
@@ -99,20 +67,10 @@ public class BaseLevelView extends SurfaceView implements SurfaceHolder.Callback
 	}
 	
 	public void updateBall(Canvas canvas) {
-		b.y += (int) b.vY;
-		b.x += (int) b.vX;
-		b.rotateBall(canvas);
-		b.bounceWall(screenH, screenW);
-		if (b.bouncePaddle(p, screenH, screenW)) {
+		b.update(canvas);
+		if (b.bouncePaddle(p)) {
 			ballHits++;
 		}
-	}
-	
-	public void updatePaddle(Canvas canvas) {
-		if (p.x > screenW - p.w) {
-			p.x = screenW - p.w;
-		}
-		p.render(canvas);
 	}
 	
 	public void winCondition() {
@@ -140,7 +98,7 @@ public class BaseLevelView extends SurfaceView implements SurfaceHolder.Callback
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
 		canvas.drawBitmap(bgBitmap, 0, 0, null);
-		updatePaddle(canvas);
+		p.update(canvas);
 		updateBall(canvas);
 		updateStatusText(canvas);
 		winCondition();
@@ -154,7 +112,7 @@ public class BaseLevelView extends SurfaceView implements SurfaceHolder.Callback
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new BaseGameThread(getHolder(), this);
+		thread = new BaseThread(getHolder(), this);
 		thread.setRunning(true);
 		thread.start();
 	}

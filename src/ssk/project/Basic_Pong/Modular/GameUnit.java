@@ -12,6 +12,8 @@ public class GameUnit {
 	int y;
 	int w;
 	int h;
+	int screenW;
+	int screenH;
 	boolean isVisible = false;
 	boolean isMoving = false;
 	Rect rect;
@@ -68,11 +70,6 @@ public class GameUnit {
 	}
 	public void setRect(Rect rect) {
 		this.rect = rect;
-	}
-	
-	public void update(int x, int y) {
-		this.x = x;
-		this.y = y;
 	}
 	
 	public boolean collide(Rect r) {

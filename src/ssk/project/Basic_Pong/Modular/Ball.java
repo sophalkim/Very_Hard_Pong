@@ -1,10 +1,13 @@
 package ssk.project.Basic_Pong.Modular;
 
+import java.util.Random;
+
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Rect;
+import android.view.View;
 
 public class Ball extends GameUnit {
 
@@ -13,19 +16,31 @@ public class Ball extends GameUnit {
 	int angle;
 	int paddleSfx;
 	int wallSfx;
+	Random r = new Random();
 	
 	public Ball() {}
-	public Ball(Context context) {
+	public Ball(View v, Context context, int screenW, int screenH) {
+		this.screenW = screenW;
+		this.screenH = screenH;
 		paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
 		wallSfx = soundPool.load(context, R.raw.bounce_wall, 1);
+		bitmap = BitmapFactory.decodeResource(v.getResources(), R.drawable.metal_ball);
+		bitmap = Bitmap.createScaledBitmap(bitmap, screenW / 15, screenH / 20, false);
+		w = bitmap.getWidth();
+		h = bitmap.getHeight();
+		angle = 0;
+		x = (int) (screenW / 2) - (w / 2);
+		y = 0;
+		vY = screenH / 100;
+		randomDirection();
 	}
-	public Ball(int x, int y, int w, int h, Bitmap bitmap) {
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
-		this.rect = new Rect(x, y, x + w, y + h);
-		this.bitmap = bitmap;
+	
+	public void randomDirection() {
+		if (r.nextInt(2) == 1) {
+			vX = (screenW / 100);
+		} else {
+			vX = -1 * (screenW / 100);
+		}
 	}
 	
 	public void playPaddleSfx() {
@@ -34,6 +49,13 @@ public class Ball extends GameUnit {
 	
 	public void playWallSfx() {
 		soundPool.play(wallSfx, 1, 1, 1, 0, 1);
+	}
+	
+	public void update(Canvas canvas) {
+		y += (int) vY;
+		x += (int) vX;
+		bounceWall();
+		rotateBall(canvas);
 	}
 	
 	public void rotateBall(Canvas canvas) {
@@ -46,7 +68,7 @@ public class Ball extends GameUnit {
 		canvas.restore();
 	}
 	
-	public void bounceWall(int screenH, int screenW) {
+	public void bounceWall() {
 		// Bounce off Top Wall
 		if (y < 0) {
 			vY = (-1) * vY;
@@ -59,7 +81,7 @@ public class Ball extends GameUnit {
 		}
 	}
 	
-	public boolean bouncePaddle(Paddle p, int screenH, int screenW) {
+	public boolean bouncePaddle(Paddle p) {
 		// Bounce off Paddle Left Edge
 		if (vY > 0 && y + h < p.y + p.h && y + h > p.y && x + w > p.x && x < p.x + (p.w * .25)) {
 			vY = (-1) * screenH / 100;

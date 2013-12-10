@@ -3,13 +3,13 @@ package ssk.project.Basic_Pong.Modular;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-public class BaseGameThread extends Thread {
+public class BaseThread extends Thread {
 	
 	private SurfaceHolder holder;
-	private BaseLevelView gameView;
+	private BaseLevel gameView;
 	private boolean running = false;
 	
-	public BaseGameThread(SurfaceHolder holder, BaseLevelView gameView) {
+	public BaseThread(SurfaceHolder holder, BaseLevel gameView) {
 		this.holder = holder;
 		this.gameView = gameView;
 	}

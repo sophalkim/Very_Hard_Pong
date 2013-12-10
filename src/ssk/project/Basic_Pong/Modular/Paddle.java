@@ -1,18 +1,30 @@
 package ssk.project.Basic_Pong.Modular;
 
+import ssk.project.Pong_Basic.R;
+import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
-
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.view.View;
 
 public class Paddle extends GameUnit {
 
-	public Paddle() {}
-	public Paddle(int x, int y, int w, int h, Bitmap bitmap) {
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
-		this.rect = new Rect(x, y, x + w, y + h);
-		this.bitmap = bitmap;
+	public Paddle(View v, Context context, int screenW, int screenH) {
+		this.screenW = screenW;
+		this.screenH = screenH;
+		bitmap = BitmapFactory.decodeResource(v.getResources(), R.drawable.lava_paddle);
+		bitmap = Bitmap.createScaledBitmap(bitmap, screenW / 4, screenH / 40, false);
+		x = screenW / 2 - (bitmap.getWidth() / 2);
+		y = screenH - screenH / 10;
+		w = bitmap.getWidth();
+		h = bitmap.getHeight();
 	}
+	
+	public void update(Canvas canvas) {
+		if (x > screenW - w) {
+			x = screenW - w;
+		}
+		render(canvas);
+	}
+
 }

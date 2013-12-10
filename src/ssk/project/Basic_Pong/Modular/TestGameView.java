@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.view.MotionEvent;
@@ -46,6 +45,7 @@ public class TestGameView extends SurfaceView implements SurfaceHolder.Callback 
 	boolean isPowerUpReversing = false;
 	boolean isPowerUpClicked = false;
 	boolean isPowerUpScaling = false;
+	Context context;
 	
 	public TestGameView(Context context) {
 		super(context);
@@ -77,14 +77,7 @@ public class TestGameView extends SurfaceView implements SurfaceHolder.Callback 
 	}
 	
 	public void initPaddle() {
-		p = new Paddle();
-		p.bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lava_paddle);
-		p.bitmap = Bitmap.createScaledBitmap(p.bitmap, screenW / 4, screenH / 40, false);
-		p.x = screenW / 2 - (p.bitmap.getWidth() / 2);
-		p.y = screenH - screenH / 10;
-		p.w = p.bitmap.getWidth();
-		p.h = p.bitmap.getHeight();
-		p.rect = new Rect(p.x, p.y, p.x + p.w, p.y + p.h);
+		p = new Paddle(this, context, screenW, screenH);
 	}
 	
 	public void initBall() {
