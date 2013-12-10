@@ -1,0 +1,46 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ssk.project.Pong_Basic"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        <activity android:name="ssk.project.Basic_Pong.SplashActivity"
+            	  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="ssk.project.Basic_Pong.StartActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Ice.IceGameActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Ice_2.IceGameActivity2" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Ice_3.IceGameActivity3" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Ice_4.IceGameActivity4" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Volcano.VolcanoGameActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Volcano_2.VolcanoGameActivity2" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Volcano_3.VolcanoGameActivity3" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Volcano_4.VolcanoGameActivity4" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Wood.WoodGameActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Wood_2.WoodGameActivity2" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Wood_3.WoodGameActivity3" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Wood_4.WoodGameActivity4" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Forest.ForestGameActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Forest_2.ForestGameActivity2" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Forest_3.ForestGameActivity3" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Forest_4.ForestGameActivity4" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Beach_1.BeachGameActivity1" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Beach_2.BeachGameActivity2" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Modular.TestGameActivity" android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="WrongCall">
+        <ignore path="src/ssk/project/Basic_Pong/GameThread.java" />
+    </issue>
+</lint>

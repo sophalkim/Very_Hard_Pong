@@ -1,0 +1,12 @@
+<set 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:interpolator="@android:anim/linear_interpolator">
+
+	<translate 
+	    android:fromYDelta="0%p" 
+	    android:toYDelta="90%p" 
+		android:duration="2500"
+		android:repeatCount="-1"
+		android:repeatMode="reverse">  
+	</translate>
+</set>
