@@ -35,6 +35,19 @@ public class Ball extends GameUnit {
 		randomDirection();
 	}
 	
+	public Ball(Ball b) {
+		screenW = b.screenW;
+		screenH = b.screenH;
+		bitmap = b.bitmap;
+		x = b.x;
+		y = b.y - 20;
+		w = b.w;
+		h = b.h;
+		vX = (-1) * b.vX;
+		vY = screenH / 150;
+		angle = 0;
+	}
+	
 	public void randomDirection() {
 		if (r.nextInt(2) == 1) {
 			vX = (screenW / 100);
@@ -58,6 +71,13 @@ public class Ball extends GameUnit {
 		rotateBall(canvas);
 	}
 	
+	public void update2(Canvas canvas, Ball b) {
+		y += (int) vY;
+		x += (int) vX;
+		bounceWall2(b);
+		rotateBall(canvas);
+	}
+	
 	public void rotateBall(Canvas canvas) {
 		if (angle++ > 360) {
 			angle = 0;
@@ -78,6 +98,19 @@ public class Ball extends GameUnit {
 		if (vX < 0 && x < 0 || vX > 0 && x + w > screenW) {
 			vX = (-1) * vX;
 			playWallSfx();
+		}
+	}
+	
+	public void bounceWall2(Ball b) {
+		// Bounce off Top Wall
+		if (y < 0) {
+			vY = (-1) * vY;
+			b.playWallSfx();
+		}	
+		// Bounce off Left/Right Wall
+		if (vX < 0 && x < 0 || vX > 0 && x + w > screenW) {
+			vX = (-1) * vX;
+			b.playWallSfx();
 		}
 	}
 	
@@ -113,6 +146,15 @@ public class Ball extends GameUnit {
 				vX = screenW / 75;
 			}
 			playPaddleSfx();
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean bouncePaddle2(Paddle p, Ball b) {
+		if (vY > 0 && y + h < p.y + p.h && y + h > p.y && x + w > p.x && x < p.x + p.w) {
+			vY = (-1) * vY;
+			b.playPaddleSfx();
 			return true;
 		}
 		return false;
