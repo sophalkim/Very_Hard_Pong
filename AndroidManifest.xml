@@ -40,7 +40,7 @@
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_2.BeachGameActivity2" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4" android:screenOrientation="portrait"></activity>
-        <activity android:name="ssk.project.Basic_Pong.Modular.TestGameActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Modular.BaseActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

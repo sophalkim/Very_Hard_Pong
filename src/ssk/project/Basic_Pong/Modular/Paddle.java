@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class Paddle extends GameUnit {
@@ -25,6 +26,22 @@ public class Paddle extends GameUnit {
 			x = screenW - w;
 		}
 		render(canvas);
+	}
+	
+	public void onTouch(MotionEvent event) {
+		switch (event.getAction()) {
+			case MotionEvent.ACTION_MOVE: {
+				if (Math.abs(x - (int) event.getX()) <= w) {
+					x = (int) event.getX();
+				}
+				isMoving = true;
+				break;
+			}		
+			case MotionEvent.ACTION_UP: {
+				isMoving = false;
+				break;
+			}
+		}
 	}
 
 }

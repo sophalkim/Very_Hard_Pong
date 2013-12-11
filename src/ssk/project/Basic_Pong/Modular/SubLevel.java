@@ -1,9 +1,7 @@
 package ssk.project.Basic_Pong.Modular;
 
-import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
@@ -13,11 +11,6 @@ public class SubLevel extends BaseLevel {
 	boolean secondBallStarting = false;
 	boolean secondBallDrawing = false;
 	PowerUp pu;
-	boolean isPowerUpAvailable = true;
-	boolean isPowerUpVisible = false;
-	boolean isPowerUpReversing = false;
-	boolean isPowerUpClicked = false;
-	boolean isPowerUpScaling = false;
 	
 	public SubLevel(Context context) {
 		super(context);
@@ -25,74 +18,29 @@ public class SubLevel extends BaseLevel {
 	
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		initPowerUp();
-	}
-	
-	public void initPowerUp() {
-		pu = new PowerUp(context);
-		pu.bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.power_up);
-		pu.bitmap = Bitmap.createScaledBitmap(pu.bitmap, screenW / 5, screenH / 8, false);
-		pu.w = pu.bitmap.getWidth();
-		pu.h = pu.bitmap.getHeight();
-		pu.x = (int) (screenW - pu.w * 1.2);
-		pu.y = screenH / 2;
+		pu = new PowerUp(this, context, screenW, screenH);
 	}
 	
 	public synchronized boolean onTouchEvent(MotionEvent event) {
 		super.onTouchEvent(event);
-		switch (event.getAction()) {
-			case MotionEvent.ACTION_DOWN: {
-				if (isPowerUpVisible) {
-					if (event.getX() >= pu.x && event.getX() <= pu.x + pu.w && event.getY() >= pu.y && event.getY() <= pu.y + pu.h) {
-	 					isPowerUpClicked = true;
-	 					break;
-	 				}
-				}
-			}	
-		}
+		pu.onClick(event);
 		return true;
 	}
 	
 	public void updatePowerUp(Canvas canvas) {
-		if (isPowerUpClicked) {
+		if (ballHits == 3 && !pu.visible && pu.available) {
+			pu.show();			
+		}
+		if (pu.clicked) {
 			p.bitmap = Bitmap.createScaledBitmap(p.bitmap, screenW / 3, screenH / 40, false);
 			p.w = p.bitmap.getWidth();
 			p.h = p.bitmap.getHeight();
 			pu.playPowerUpSfx();
-			isPowerUpClicked = false;
-			isPowerUpAvailable = false;
-			isPowerUpVisible = false;
+			pu.clicked = false;
+			pu.available = false;
+			pu.visible = false;
 		}
-		if (ballHits == 3 && !isPowerUpVisible && isPowerUpAvailable) {
-			pu.playPowerUpSfx();
-			isPowerUpVisible = true;			
-		}
-		if (isPowerUpVisible) {
-			// Rotating PowerUP
-			if (!isPowerUpReversing) {
-				pu.angle++;
-			}
-			if (isPowerUpReversing) {
-				pu.angle--;
-			}
-			if (Math.abs(pu.angle) == 10) {
-				isPowerUpReversing = !isPowerUpReversing;
-			}
-			// Scale PowerUP
-			if (!isPowerUpScaling) {
-				pu.scale = (float) (pu.scale + .1);
-			}
-			if (isPowerUpScaling) {
-				pu.scale = (float) (pu.scale - .1);
-			}
-			if (Math.abs(pu.scale) == 1.5) {
-				isPowerUpScaling = !isPowerUpScaling;
-			}
-			canvas.save();
-			canvas.rotate(pu.angle, pu.x + (pu.w / 2), pu.y + (pu.h / 2));
-			canvas.drawBitmap(pu.bitmap, pu.x, pu.y, null);
-			canvas.restore();
-		}
+		pu.update(canvas);
 	}
 	
 	public void initBall2() {
@@ -115,7 +63,7 @@ public class SubLevel extends BaseLevel {
 			if (b2.y > (screenH - b.h)) {
 				thread.setRunning(false);
 				pause = true;
-				((TestGameActivity)getContext()).loseScreen();
+				((BaseActivity)getContext()).loseScreen();
 			}
 		}
 	}

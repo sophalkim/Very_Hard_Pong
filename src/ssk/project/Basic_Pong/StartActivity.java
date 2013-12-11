@@ -1,6 +1,5 @@
 package ssk.project.Basic_Pong;
 
-import ssk.project.Basic_Pong.Level_Beach_1.BeachGameActivity1;
 import ssk.project.Basic_Pong.Level_Beach_2.BeachGameActivity2;
 import ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3;
 import ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4;
@@ -16,7 +15,7 @@ import ssk.project.Basic_Pong.Level_Wood.WoodGameActivity;
 import ssk.project.Basic_Pong.Level_Wood_2.WoodGameActivity2;
 import ssk.project.Basic_Pong.Level_Wood_3.WoodGameActivity3;
 import ssk.project.Basic_Pong.Level_Wood_4.WoodGameActivity4;
-import ssk.project.Basic_Pong.Modular.TestGameActivity;
+import ssk.project.Basic_Pong.Modular.BaseActivity;
 import ssk.project.Pong_Basic.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -127,7 +126,7 @@ public class StartActivity extends FragmentActivity {
     }
     
     public void startBeach1() {
-    	i = new Intent(StartActivity.this, TestGameActivity.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
     	startActivity(i);
     }
     

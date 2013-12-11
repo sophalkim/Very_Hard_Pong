@@ -50,19 +50,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
 	@Override
 	public synchronized boolean onTouchEvent(MotionEvent event) {
-		switch (event.getAction()) {
-			case MotionEvent.ACTION_MOVE: {
-				if (Math.abs(p.x - (int) event.getX()) <= p.w) {
-					p.x = (int) event.getX();
-				}
-				p.isMoving = true;
-				break;
-			}		
-			case MotionEvent.ACTION_UP: {
-				p.isMoving = false;
-				break;
-			}
-		}
+		p.onTouch(event);
 		return true;
 	}
 	
@@ -77,7 +65,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		if (ballHits == 15) {
 			thread.setRunning(false);
 			pause = true;
-			((TestGameActivity)getContext()).winScreen();
+			((BaseActivity)getContext()).winScreen();
 		}
 	}
 	
@@ -85,7 +73,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		if (b.y > (screenH - b.h)) {
 			thread.setRunning(false);
 			pause = true;
-			((TestGameActivity)getContext()).loseScreen();
+			((BaseActivity)getContext()).loseScreen();
 		}
 	}
 	
