@@ -36,22 +36,17 @@ public class SubLevel extends BaseLevel {
 	}
 	
 	@Override
-	public void loseCondition() {
-		super.loseCondition();
-		if (b2.y > (screenH - b2.h)) {
-			thread.setRunning(false);
-			pause = true;
-			((BaseActivity)getContext()).loseScreen();
-		}
-	}
-	
-	@Override
 	public void updateBall(Canvas canvas) {
 		super.updateBall(canvas);
 		if (ballStart) {
 			b2.update2(canvas, b);
 			if (b2.bouncePaddle2(p, b)) {
 				ballHits++;
+			}
+			if (b2.y > (screenH - b2.h)) {
+				thread.setRunning(false);
+				pause = true;
+				((BaseActivity)getContext()).loseScreen();
 			}
 		}
 	}
