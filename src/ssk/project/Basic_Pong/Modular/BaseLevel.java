@@ -24,6 +24,9 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	Paint goalPaint = new Paint();
 	boolean pause = false;
 	Context context;
+	String hitsText = "Hits : " ;
+	String goalText = "Goal : 15";
+	float goalTextLength;
 	
 	public BaseLevel(Context context) {
 		super(context);
@@ -33,6 +36,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		paint.setTextSize(40);
 		goalPaint.setColor(Color.BLUE);
 		goalPaint.setTextSize(40);
+		goalTextLength = goalPaint.measureText(goalText);
 		
 		getHolder().addCallback(this);
 		setFocusable(true);
@@ -78,8 +82,8 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 	public void updateStatusText(Canvas canvas) {
-		canvas.drawText("Hits : " + ballHits, 50, 50, paint);
-		canvas.drawText("Goal : 15", screenW / 2 + screenW / 4, screenH / 20, goalPaint);
+		canvas.drawText(hitsText + ballHits, screenW / 20 , screenH / 20, paint);
+		canvas.drawText(goalText, screenW - goalTextLength - screenW / 20, screenH / 20, goalPaint);
 	}
 	
 	@Override
