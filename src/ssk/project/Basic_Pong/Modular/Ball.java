@@ -19,6 +19,7 @@ public class Ball extends GameUnit {
 	Random r = new Random();
 	
 	public Ball() {}
+	
 	public Ball(View v, Context context, int screenW, int screenH) {
 		this.screenW = screenW;
 		this.screenH = screenH;
@@ -48,22 +49,6 @@ public class Ball extends GameUnit {
 		angle = 0;
 	}
 	
-	public void randomDirection() {
-		if (r.nextInt(2) == 1) {
-			vX = (screenW / 100);
-		} else {
-			vX = -1 * (screenW / 100);
-		}
-	}
-	
-	public void playPaddleSfx() {
-		soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
-	}
-	
-	public void playWallSfx() {
-		soundPool.play(wallSfx, 1, 1, 1, 0, 1);
-	}
-	
 	public void update(Canvas canvas) {
 		y += (int) vY;
 		x += (int) vX;
@@ -76,16 +61,6 @@ public class Ball extends GameUnit {
 		x += (int) vX;
 		bounceWall2(b);
 		rotateBall(canvas);
-	}
-	
-	public void rotateBall(Canvas canvas) {
-		if (angle++ > 360) {
-			angle = 0;
-		}
-		canvas.save();
-		canvas.rotate(angle, x + (w / 2), y + (h / 2));
-		canvas.drawBitmap(bitmap, x, y, null);
-		canvas.restore();
 	}
 	
 	public void bounceWall() {
@@ -158,5 +133,31 @@ public class Ball extends GameUnit {
 			return true;
 		}
 		return false;
+	}
+	
+	public void randomDirection() {
+		if (r.nextInt(2) == 1) {
+			vX = (screenW / 100);
+		} else {
+			vX = -1 * (screenW / 100);
+		}
+	}
+	
+	public void rotateBall(Canvas canvas) {
+		if (angle++ > 360) {
+			angle = 0;
+		}
+		canvas.save();
+		canvas.rotate(angle, x + (w / 2), y + (h / 2));
+		canvas.drawBitmap(bitmap, x, y, null);
+		canvas.restore();
+	}
+	
+	public void playPaddleSfx() {
+		soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
+	}
+	
+	public void playWallSfx() {
+		soundPool.play(wallSfx, 1, 1, 1, 0, 1);
 	}
 }
