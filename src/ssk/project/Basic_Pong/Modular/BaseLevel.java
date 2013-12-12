@@ -74,7 +74,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 	public void loseCondition() {
-		if (b.y > (screenH - b.h)) {
+		if (b.y > (b.screenH - b.h)) {
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).loseScreen();
