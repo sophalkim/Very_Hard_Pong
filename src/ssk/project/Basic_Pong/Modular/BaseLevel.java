@@ -5,8 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -15,29 +13,19 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
 	int screenW;
 	int screenH;
-	Bitmap bgBitmap;
-	BaseThread thread;
-	Paddle p;
-	Ball b;
 	int ballHits = 0;
-	Paint paint = new Paint();
-	Paint goalPaint = new Paint();
 	boolean pause = false;
 	Context context;
-	String hitsText = "Hits : " ;
-	String goalText = "Goal : 15";
-	float goalTextLength;
+	BaseThread thread;
+	Bitmap bgBitmap;
+	GameText gt;
+	Paddle p;
+	Ball b;
 	
 	public BaseLevel(Context context) {
 		super(context);
 		this.context = context;
 		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.volcano);
-		paint.setColor(Color.GREEN);
-		paint.setTextSize(40);
-		goalPaint.setColor(Color.BLUE);
-		goalPaint.setTextSize(40);
-		goalTextLength = goalPaint.measureText(goalText);
-		
 		getHolder().addCallback(this);
 		setFocusable(true);
 	}
@@ -48,21 +36,9 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		screenW = w;
 		screenH = h;
 		bgBitmap = Bitmap.createScaledBitmap(bgBitmap, screenW, screenH, false);
+		gt = new GameText();
 		b = new Ball(this, context, screenW, screenH);
 		p = new Paddle(this, context, screenW, screenH);
-	}
-	
-	@Override
-	public synchronized boolean onTouchEvent(MotionEvent event) {
-		p.onTouch(event);
-		return true;
-	}
-	
-	public void updateBall(Canvas canvas) {
-		b.update(canvas);
-		if (b.bouncePaddle(p)) {
-			ballHits++;
-		}
 	}
 	
 	public void winCondition() {
@@ -81,20 +57,28 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		}
 	}
 	
-	public void updateStatusText(Canvas canvas) {
-		canvas.drawText(hitsText + ballHits, screenW / 20 , screenH / 20, paint);
-		canvas.drawText(goalText, screenW - goalTextLength - screenW / 20, screenH / 20, goalPaint);
+	public void updateBall(Canvas canvas) {
+		b.update(canvas);
+		if (b.bouncePaddle(p)) {
+			ballHits++;
+		}
 	}
 	
 	@Override
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
 		canvas.drawBitmap(bgBitmap, 0, 0, null);
+		gt.updateText(canvas, screenW, screenH, ballHits);
 		p.update(canvas);
 		updateBall(canvas);
-		updateStatusText(canvas);
 		winCondition();
 		loseCondition();
+	}
+	
+	@Override
+	public synchronized boolean onTouchEvent(MotionEvent event) {
+		p.onTouch(event);
+		return true;
 	}
 
 	@Override
