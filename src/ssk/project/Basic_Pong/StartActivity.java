@@ -1,6 +1,6 @@
 package ssk.project.Basic_Pong;
 
-import ssk.project.Basic_Pong.Level_Beach_2.BeachGameActivity2;
+import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
 import ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3;
 import ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4;
 import ssk.project.Basic_Pong.Level_Ice.IceGameActivity;
@@ -41,7 +41,7 @@ public class StartActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(gameView = new StartView(this));
-        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
 		mp = MediaPlayer.create(this, R.raw.starting_jingle);
 		mp.setLooping(true);
         mp.start();
@@ -131,8 +131,8 @@ public class StartActivity extends FragmentActivity {
     }
     
     public void startBeach2() {
-    	i = new Intent(StartActivity.this, BeachGameActivity2.class);
-    	startActivity(i);
+    	AudioPreferences audioDialog = new AudioPreferences();
+		audioDialog.show(getSupportFragmentManager(), "missisles");
     }
     
     public void startBeach3() {

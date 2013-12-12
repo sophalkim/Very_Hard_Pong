@@ -68,19 +68,22 @@ public final class R {
         public static final int wood_flooring_background=0x7f02001a;
     }
     public static final class id {
-        public static final int button1=0x7f080002;
-        public static final int button2=0x7f080004;
-        public static final int button3=0x7f080005;
-        public static final int imageView1=0x7f080001;
+        public static final int button1=0x7f080003;
+        public static final int button2=0x7f080006;
+        public static final int button3=0x7f080007;
+        public static final int checkBox1=0x7f080001;
+        public static final int checkBox2=0x7f080002;
+        public static final int imageView1=0x7f080004;
         public static final int textView1=0x7f080000;
-        public static final int text_header_1=0x7f080003;
+        public static final int text_header_1=0x7f080005;
     }
     public static final class layout {
-        public static final int loselayout=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int splash_layout=0x7f030002;
-        public static final int testloselayout=0x7f030003;
-        public static final int winlayout=0x7f030004;
+        public static final int audiopreferenceslayout=0x7f030000;
+        public static final int loselayout=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int splash_layout=0x7f030003;
+        public static final int testloselayout=0x7f030004;
+        public static final int winlayout=0x7f030005;
     }
     public static final class raw {
         public static final int beach_music=0x7f050000;

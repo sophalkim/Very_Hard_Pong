@@ -36,17 +36,6 @@ public class SubLevel extends BaseLevel {
 	}
 	
 	@Override
-	public void updateBall(Canvas canvas) {
-		super.updateBall(canvas);
-		if (ballStart) {
-			b2.update2(canvas, b);
-			if (b2.bouncePaddle2(p, b)) {
-				ballHits++;
-			}
-		}
-	}
-	
-	@Override
 	public void loseCondition() {
 		super.loseCondition();
 		if (ballStart) {
@@ -54,6 +43,17 @@ public class SubLevel extends BaseLevel {
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).loseScreen();
+			}
+		}
+	}
+	
+	@Override
+	public void updateBall(Canvas canvas) {
+		super.updateBall(canvas);
+		if (ballStart) {
+			b2.update2(canvas, b);
+			if (b2.bouncePaddle2(p, b)) {
+				ballHits++;
 			}
 		}
 	}
