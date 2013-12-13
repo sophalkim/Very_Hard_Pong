@@ -150,7 +150,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
 
 	@Override
-	public void onClick(boolean music) {
+	public void onClickMusic(boolean music) {
 		playMusic = music;
 		if (music) {
 			mp.start();
@@ -158,6 +158,11 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 			mp.pause();
 		}
 		savePreferences("MUSIC", music);
+	}
+	
+	@Override
+	public void onClickSound(boolean sound) {
+		gameView.playSound = sound;
 	}
 	
 	public void loadPreferences() {
@@ -172,5 +177,4 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 		edit.putBoolean(key, value);
 		edit.commit();
 	}
-	
 }

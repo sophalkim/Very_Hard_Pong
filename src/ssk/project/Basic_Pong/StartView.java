@@ -2,6 +2,7 @@ package ssk.project.Basic_Pong;
 
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -86,6 +87,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	boolean levelSelected = false;
 	boolean animationCompleted = false;
 	
+	SharedPreferences sp;
+	boolean playSound = true;
+	
 	public StartView(Context context) {
 		super(context);
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);	
@@ -94,7 +98,6 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		setFocusable(true);
 		velocityX = 10;
 		velocityY = 10;
-		
 	}
 	
 	@Override
@@ -305,7 +308,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave
 		if (iceCaveSelected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, 0, 0 + scaleX, 0 + scaleY);
 			canvas.drawBitmap(iceCave, null, startingRect, null);
@@ -322,7 +327,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave 2
 		if (iceCave2Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, 0, 0 + scaleX, 0 + scaleY);
 			canvas.drawBitmap(iceCave, null, startingRect, null);
@@ -339,7 +346,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave 3
 		if (iceCave3Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, 0, 0 + scaleX, 0 + scaleY);
 			canvas.drawBitmap(iceCave, null, startingRect, null);
@@ -356,7 +365,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave 4
 		if (iceCave4Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, 0, 0 + scaleX, 0 + scaleY);
 			canvas.drawBitmap(iceCave, null, startingRect, null);
@@ -373,7 +384,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano
 		if (volcanoSelected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, 0, screenWidth, 0 + scaleY);
 			canvas.drawBitmap(volcano, null, startingRect, null);
@@ -390,7 +403,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano 2
 		if (volcano2Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, 0, screenWidth, 0 + scaleY);
 			canvas.drawBitmap(volcano, null, startingRect, null);
@@ -407,7 +422,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano 3
 		if (volcano3Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, 0, screenWidth, 0 + scaleY);
 			canvas.drawBitmap(volcano, null, startingRect, null);
@@ -424,7 +441,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano 4
 		if (volcano4Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, 0, screenWidth, 0 + scaleY);
 			canvas.drawBitmap(volcano, null, startingRect, null);
@@ -441,7 +460,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 
 		if (woodSelected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, screenHeight - scaleY, 0 + scaleX, screenHeight);
 			canvas.drawBitmap(wood, null, startingRect, null);
@@ -458,7 +479,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 2
 		if (wood2Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, screenHeight - scaleY, 0 + scaleX, screenHeight);
 			canvas.drawBitmap(wood, null, startingRect, null);
@@ -475,7 +498,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 3
 		if (wood3Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, screenHeight - scaleY, 0 + scaleX, screenHeight);
 			canvas.drawBitmap(wood, null, startingRect, null);
@@ -492,7 +517,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 4
 		if (wood4Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(0, screenHeight - scaleY, 0 + scaleX, screenHeight);
 			canvas.drawBitmap(wood, null, startingRect, null);
@@ -509,7 +536,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach
 		if (beachSelected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, screenHeight - scaleY, screenWidth + scaleX, screenHeight + scaleY);
 			canvas.drawBitmap(beach, null, startingRect, null);
@@ -526,7 +555,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach 2
 		if (beach2Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, screenHeight - scaleY, screenWidth + scaleX, screenHeight + scaleY);
 			canvas.drawBitmap(beach, null, startingRect, null);
@@ -543,7 +574,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach 3
 		if (beach3Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, screenHeight - scaleY, screenWidth + scaleX, screenHeight + scaleY);
 			canvas.drawBitmap(beach, null, startingRect, null);
@@ -560,7 +593,9 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach 3
 		if (beach4Selected) {
 			if (scaleX == 0) {
-				soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				if (playSound) {
+					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
+				}
 			}
 			Rect startingRect = new Rect(screenWidth - scaleX, screenHeight - scaleY, screenWidth + scaleX, screenHeight + scaleY);
 			canvas.drawBitmap(beach, null, startingRect, null);
