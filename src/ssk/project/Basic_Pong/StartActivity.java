@@ -27,42 +27,46 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 
-public class StartActivity extends FragmentActivity {
+public class StartActivity extends FragmentActivity implements AudioPreferences.Listener {
 
 	StartView gameView;
 	static Typeface tf1;
 	static Typeface tf2;
 	Intent i;
 	MediaPlayer mp;
-	SharedPreferences sp;
-	Editor edit;
+	boolean playSound = true;
+	boolean playMusic = true;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(gameView = new StartView(this));
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-		mp = MediaPlayer.create(this, R.raw.starting_jingle);
-		mp.setLooping(true);
-        mp.start();
+        loadPreferences();
         tf1 = Typeface.createFromAsset(getAssets(), "fonts/pirataone.ttf");
         tf2 = Typeface.createFromAsset(getAssets(), "fonts/iceland.ttf");
-        sp = PreferenceManager.getDefaultSharedPreferences(this);
-		edit = sp.edit();
-        
+        mp = MediaPlayer.create(this, R.raw.starting_jingle);
+		mp.setLooping(true);
+        if (playMusic) {
+	        mp.start();
+        }
     }
     
     @Override
 	public void onPause() {
 		super.onPause();
 		gameView.thread.setRunning(false);
-		mp.release();
+		if (playMusic) {
+			mp.release();
+		}
 	}
     
     @Override
 	public void onDestroy(){
 		super.onDestroy();
-		mp.release();
+		if (playMusic) {
+			mp.release();
+		}
 	}
     
     public void startWood() {
@@ -144,5 +148,29 @@ public class StartActivity extends FragmentActivity {
     	i = new Intent(StartActivity.this, BeachGameActivity4.class);
     	startActivity(i);
     }
-    
+
+	@Override
+	public void onClick(boolean music) {
+		playMusic = music;
+		if (music) {
+			mp.start();
+		} else {
+			mp.pause();
+		}
+		savePreferences("MUSIC", music);
+	}
+	
+	public void loadPreferences() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		playSound = sp.getBoolean("SOUND", true);
+		playMusic = sp.getBoolean("MUSIC", true);
+	}
+	
+	public void savePreferences(String key, boolean value) {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		Editor edit = sp.edit();
+		edit.putBoolean(key, value);
+		edit.commit();
+	}
+	
 }
