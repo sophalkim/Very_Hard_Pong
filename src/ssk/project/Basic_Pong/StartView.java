@@ -12,6 +12,7 @@ import android.graphics.Paint.Align;
 import android.graphics.Rect;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -98,6 +99,8 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		setFocusable(true);
 		velocityX = 10;
 		velocityY = 10;
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+		playSound = sp.getBoolean("SOUND", true);
 	}
 	
 	@Override
