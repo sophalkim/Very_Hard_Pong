@@ -1,5 +1,7 @@
 package ssk.project.Basic_Pong.Modular;
 
+import ssk.project.GameUnits.Ball;
+import ssk.project.GameUnits.PowerUp;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;

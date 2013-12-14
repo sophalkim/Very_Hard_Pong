@@ -1,6 +1,7 @@
 package ssk.project.Basic_Pong.Level_Volcano;
 import java.util.Random;
 
+import ssk.project.Basic_Pong.Modular.BaseThread;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -20,7 +21,7 @@ public class VolcanoGameView extends SurfaceView implements SurfaceHolder.Callba
 	int screenWidth;
 	int screenHeight;
 	Bitmap backgroundBitmap;
-	VolcanoGameThread thread;
+	BaseThread thread;
 	// Paddle 1
 	int paddleX;
 	int paddleY;
@@ -361,7 +362,7 @@ public class VolcanoGameView extends SurfaceView implements SurfaceHolder.Callba
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new VolcanoGameThread(getHolder(), this);
+		thread = new BaseThread(getHolder(), this);
 		thread.setRunning(true);
 		thread.start();
 	}

@@ -1,6 +1,7 @@
 package ssk.project.Basic_Pong.Level_Forest;
 import java.util.Random;
 
+import ssk.project.Basic_Pong.Modular.BaseThread;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,7 +23,7 @@ public class ForestGameView extends SurfaceView implements SurfaceHolder.Callbac
 	int screenWidth;
 	int screenHeight;
 	Bitmap backgroundBitmap;
-	ForestGameThread thread;
+	BaseThread thread;
 	// Paddle 1
 	int paddleX;
 	int paddleY;
@@ -393,7 +394,7 @@ public class ForestGameView extends SurfaceView implements SurfaceHolder.Callbac
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new ForestGameThread(getHolder(), this);
+		thread = new BaseThread(getHolder(), this);
 		thread.setRunning(true);
 		thread.start();
 	}

@@ -1,4 +1,4 @@
-package ssk.project.Basic_Pong.Modular;
+package ssk.project.GameUnits;
 
 import ssk.project.Pong_Basic.R;
 import android.content.Context;

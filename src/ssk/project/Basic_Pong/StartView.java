@@ -1,5 +1,6 @@
 package ssk.project.Basic_Pong;
 
+import ssk.project.Basic_Pong.Modular.BaseThread;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,7 +24,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	int screenWidth;
 	int screenHeight;
 
-	StartThread thread;
+	BaseThread thread;
 	SoundPool soundPool;
 	private int onClickSound;
 	
@@ -621,7 +622,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new StartThread(getHolder(), this);
+		thread = new BaseThread(getHolder(), this);
 		thread.setRunning(true);
 		thread.start();
 	}

@@ -1,6 +1,7 @@
 package ssk.project.Basic_Pong.Level_Beach_2;
 import java.util.Random;
 
+import ssk.project.Basic_Pong.Modular.BaseThread;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -20,7 +21,7 @@ public class BeachGameView2 extends SurfaceView implements SurfaceHolder.Callbac
 	int screenWidth;
 	int screenHeight;
 	Bitmap backgroundBitmap;
-	BeachGameThread2 thread;
+	BaseThread thread;
 	// Paddle 1
 	int paddleX;
 	int paddleY;
@@ -361,7 +362,7 @@ public class BeachGameView2 extends SurfaceView implements SurfaceHolder.Callbac
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new BeachGameThread2(getHolder(), this);
+		thread = new BaseThread (getHolder(), this);
 		thread.setRunning(true);
 		thread.start();
 	}

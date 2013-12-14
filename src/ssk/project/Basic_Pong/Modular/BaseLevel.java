@@ -1,5 +1,8 @@
 package ssk.project.Basic_Pong.Modular;
 
+import ssk.project.GameUnits.Ball;
+import ssk.project.GameUnits.GameText;
+import ssk.project.GameUnits.Paddle;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Bitmap;

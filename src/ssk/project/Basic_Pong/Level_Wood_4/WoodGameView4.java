@@ -1,6 +1,7 @@
 package ssk.project.Basic_Pong.Level_Wood_4;
 import java.util.Random;
 
+import ssk.project.Basic_Pong.Modular.BaseThread;
 import ssk.project.Basic_Pong.model.Explosion;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
@@ -24,7 +25,7 @@ public class WoodGameView4 extends SurfaceView implements SurfaceHolder.Callback
 	int screenWidth;
 	int screenHeight;
 	Bitmap backgroundBitmap;
-	WoodGameThread4 thread;
+	BaseThread thread;
 	// Paddle 1
 	int paddleX;
 	int paddleY;
@@ -456,7 +457,7 @@ public class WoodGameView4 extends SurfaceView implements SurfaceHolder.Callback
 
 	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
-		thread = new WoodGameThread4(getHolder(), this);
+		thread = new BaseThread(getHolder(), this);
 		thread.setRunning(true);
 		thread.start();
 	}

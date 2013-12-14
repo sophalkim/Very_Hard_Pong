@@ -1,4 +1,4 @@
-package ssk.project.Basic_Pong.Modular;
+package ssk.project.GameUnits;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -8,17 +8,17 @@ import android.media.SoundPool;
 
 public class GameUnit {
 
-	int x;
-	int y;
-	int w;
-	int h;
-	int screenW;
-	int screenH;
-	boolean isVisible = false;
-	boolean isMoving = false;
-	Rect rect;
-	Bitmap bitmap;
-	SoundPool soundPool;
+	public int x;
+	public int y;
+	public int w;
+	public int h;
+	public int screenW;
+	public int screenH;
+	public boolean isVisible = false;
+	public boolean isMoving = false;
+	public Rect rect;
+	public Bitmap bitmap;
+	public SoundPool soundPool;
 	
 	public GameUnit() {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
