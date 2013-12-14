@@ -131,6 +131,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     
     public void startBeach1() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 4);
     	startActivity(i);
     }
     
