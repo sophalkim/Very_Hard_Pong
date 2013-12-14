@@ -1,8 +1,6 @@
 package ssk.project.Basic_Pong;
 
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3;
-import ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4;
 import ssk.project.Basic_Pong.Level_Ice.IceGameActivity;
 import ssk.project.Basic_Pong.Level_Ice_2.IceGameActivity2;
 import ssk.project.Basic_Pong.Level_Ice_3.IceGameActivity3;
@@ -131,7 +129,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     
     public void startBeach1() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 4);
+    	i.putExtra("Level", 1);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
@@ -141,12 +140,16 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startBeach3() {
-    	i = new Intent(StartActivity.this, BeachGameActivity3.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 2);
+    	i.putExtra("Music", 2);
     	startActivity(i);
     }
     
     public void startBeach4() {
-    	i = new Intent(StartActivity.this, BeachGameActivity4.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 3);
+    	i.putExtra("Music", 3);
     	startActivity(i);
     }
 

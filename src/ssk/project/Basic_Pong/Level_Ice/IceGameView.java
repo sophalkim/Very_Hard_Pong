@@ -5,7 +5,6 @@ import java.util.Random;
 
 import ssk.project.Basic_Pong.Level_Ice.Objects.IceBlock;
 import ssk.project.Basic_Pong.Level_Ice.Objects.SolidBlock;
-import ssk.project.Basic_Pong.Modular.BaseActivity;
 import ssk.project.Basic_Pong.Modular.BaseThread;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
@@ -229,13 +228,13 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 		if (iceHit == (iceblockQuantity * 2)) {
 			thread.setRunning(false);
 			pause = true;
-			((BaseActivity)getContext()).winScreen();
+			((IceGameActivity)getContext()).winScreen();
 		}			
 		// Lose Condition
 		if (ballY > (screenHeight - ballHeight)) {
 			thread.setRunning(false);
 			pause = true;
-			((BaseActivity)getContext()).loseScreen();
+			((IceGameActivity)getContext()).loseScreen();
 		}
 		// Hit Text
 		canvas.drawText("Hits : " + ballHits, 50, 50, paint);
