@@ -46,7 +46,6 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 	private SoundPool soundPool;
 	private int ballHitWall;
 	private int ballHitPaddle;
-	private int ballHitSolidBlock;
 	int iceHit;
 	List<IceBlock> iceBlocks = new ArrayList<IceBlock>();
 	// Level Variables
@@ -55,15 +54,9 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 	Paint paint = new Paint();
 	boolean pause = false;
 	Random r = new Random();
-	// SolidBlock
-	SolidBlock solidBlock;
-	Bitmap solidBlockBitmap;
-	boolean isSolidBlockVisible = false;
-	long pTime = 0;
-	long cTime;
-	long dTime;
 	IceBlock ib;
 	Context context;
+	SolidBlock sb;
 		
 	public IceGameView(Context context) {
 		super(context);
@@ -72,12 +65,10 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 		paddleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_paddle);		
 		ballBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.metal_ball);			
 		backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
-		solidBlockBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.solidblock);
 		
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 		ballHitWall = soundPool.load(context, R.raw.bounce_wall, 1);
 		ballHitPaddle = soundPool.load(context, R.raw.bounce_paddle, 1);
-		ballHitSolidBlock = soundPool.load(context, R.raw.solid_block_sound_effect, 1);
 		
 		paint.setColor(Color.GREEN);
 		paint.setTextSize(40);
@@ -117,14 +108,7 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 			IceBlock ice = new IceBlock(ib, i * ib.w + 10, screenHeight / 2);
 			iceBlocks.add(ice);
 		}
-		
-		// Initialize SolidBlock
-		solidBlockBitmap = Bitmap.createScaledBitmap(solidBlockBitmap, screenWidth / 10, screenWidth / 10, false);
-		solidBlock = new SolidBlock();
-		solidBlock.solidBlockWidth = solidBlockBitmap.getWidth();
-		solidBlock.solidBlockHeight = solidBlockBitmap.getHeight();
-		solidBlock.solidBlockX = r.nextInt(screenWidth - solidBlock.solidBlockWidth);
-		solidBlock.solidBlockY = screenHeight / 2 + screenHeight / 8;
+		sb = new SolidBlock(this, context, screenWidth, screenHeight);
 	}
 	
 	@Override
@@ -226,43 +210,8 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 		for (int i = 0; i < iceBlocks.size(); i++) {
 			iceBlocks.get(i).update(canvas);
 		}		
-		
-		// Setting Up Solid Block
-		cTime = System.currentTimeMillis();
-		dTime = cTime - pTime;
-		if (dTime >= 5000) {
-			canvas.drawBitmap(solidBlockBitmap, solidBlock.solidBlockX, solidBlock.solidBlockY, null);
-			isSolidBlockVisible = true;
-			if (dTime >= 9000) {
-				pTime = cTime;
-				solidBlock.solidBlockX = r.nextInt(screenWidth - solidBlock.solidBlockWidth);
-				isSolidBlockVisible = false;
-			}
-		}
-		// SolidBlock Collisions
-		if (isSolidBlockVisible) {
-			// Bounce off SolidBlock Top
-			if (velocityY > 0 && Math.abs(ballY + ballHeight - solidBlock.solidBlockY) <= 10 && ballX + ballWidth > solidBlock.solidBlockX && ballX < solidBlock.solidBlockX + solidBlock.solidBlockWidth) {
-				velocityY = (-1) * velocityY;
-				soundPool.play(ballHitSolidBlock, 1, 1, 1, 0, 1);
-			}		
-			// Bounce off SolidBlock Bottom
-			if (velocityY < 0 && ballX + ballWidth >= solidBlock.solidBlockX && ballX <= solidBlock.solidBlockX + solidBlock.solidBlockWidth && Math.abs(ballY - (solidBlock.solidBlockY + solidBlock.solidBlockHeight)) <= 10) {
-				velocityY = (-1) * velocityY;
-				soundPool.play(ballHitSolidBlock, 1, 1, 1, 0, 1);
-			}	
-			// Bounce off SolidBlock Left
-			if (velocityX > 0 && ballY + ballHeight >= solidBlock.solidBlockY && ballY <= solidBlock.solidBlockY + solidBlock.solidBlockHeight && Math.abs(ballX + ballWidth - solidBlock.solidBlockX) <= 10) {
-				velocityX = (-1) * velocityX;
-				soundPool.play(ballHitSolidBlock, 1, 1, 1, 0, 1);
-			}		
-			// Bounce off SolidBlock Right
-			if (velocityX < 0 && ballY + ballHeight >= solidBlock.solidBlockY && ballY <= solidBlock.solidBlockY + solidBlock.solidBlockHeight && Math.abs(ballX - (solidBlock.solidBlockX + solidBlock.solidBlockWidth)) <= 10) {
-				velocityX = (-1) * velocityX;
-				soundPool.play(ballHitSolidBlock, 1, 1, 1, 0, 1);
-			}
-		}
-		
+		// Drawing SolidBlock
+		sb.update(canvas);
 	}
 
 	@Override
