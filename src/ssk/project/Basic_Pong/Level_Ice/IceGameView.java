@@ -2,9 +2,9 @@ package ssk.project.Basic_Pong.Level_Ice;
 import java.util.ArrayList;
 import java.util.List;
 
-import ssk.project.Basic_Pong.Level_Ice.Objects.IceBlock;
-import ssk.project.Basic_Pong.Level_Ice.Objects.SolidBlock;
 import ssk.project.Basic_Pong.Modular.BaseLevel;
+import ssk.project.GameUnits.IceBlock;
+import ssk.project.GameUnits.SolidBlock;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.BitmapFactory;
