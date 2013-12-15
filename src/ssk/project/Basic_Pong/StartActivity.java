@@ -1,7 +1,6 @@
 package ssk.project.Basic_Pong;
 
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.Basic_Pong.Level_Ice.IceGameActivity;
 import ssk.project.Basic_Pong.Level_Ice_2.IceGameActivity2;
 import ssk.project.Basic_Pong.Level_Ice_3.IceGameActivity3;
 import ssk.project.Basic_Pong.Level_Ice_4.IceGameActivity4;
@@ -55,8 +54,16 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 		super.onPause();
 		gameView.thread.setRunning(false);
 		if (playMusic) {
-			mp.release();
+			mp.pause();
 		}
+	}
+    
+    @Override
+	public void onResume() {
+		super.onResume();
+		if (playMusic) {
+	        mp.start();
+        }
 	}
     
     @Override
@@ -108,7 +115,9 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startIce() {
-    	i = new Intent(StartActivity.this, IceGameActivity.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 5);
+    	i.putExtra("Music", 5);
     	startActivity(i);
     }
     

@@ -5,7 +5,9 @@ import java.util.List;
 import ssk.project.Basic_Pong.Level_Ice.Objects.IceBlock;
 import ssk.project.Basic_Pong.Level_Ice.Objects.SolidBlock;
 import ssk.project.Basic_Pong.Modular.BaseLevel;
+import ssk.project.Pong_Basic.R;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
 
@@ -21,6 +23,7 @@ public class IceGameView extends BaseLevel {
 		
 	public IceGameView(Context context) {
 		super(context);
+		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
 	}
 	
 	@Override
