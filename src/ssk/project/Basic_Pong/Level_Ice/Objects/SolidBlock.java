@@ -38,7 +38,7 @@ public class SolidBlock extends GameUnit {
 		w = bitmap.getWidth();
 		h = bitmap.getHeight();
 		x = (int) (screenW / 2) - (w / 2);
-		y = 0;
+		y = screenH / 2 + screenH / 4;
 	}
 	
 	public SolidBlock(SolidBlock sb, int x, int y) {
@@ -55,7 +55,7 @@ public class SolidBlock extends GameUnit {
 		soundPool.play(solidSfx, 1, 1, 1, 0, 1);
 	}
 	
-	public void update(Canvas canvas) {
+	public void update(Canvas canvas, Ball b) {
 		cTime = System.currentTimeMillis();
 		dTime = cTime - pTime;
 		if (dTime >= 5000) {
@@ -65,6 +65,7 @@ public class SolidBlock extends GameUnit {
 				x = r.nextInt(screenW - w);
 			}
 		}
+		bounceBall(b);
 	}
 	
 	public boolean bounceBall(Ball b) {

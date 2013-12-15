@@ -52,13 +52,14 @@ public class IceBlock extends GameUnit {
 		soundPool.play(iceSfx, 1, 1, 1, 0, 1);
 	}
 	
-	public void update(Canvas canvas) {
+	public void update(Canvas canvas, Ball b) {
 		if (state == 2) {
 			render(canvas);
 		}
 		if (state == 1) {
 			canvas.drawBitmap(iceCrack, x, y, null);
 		}
+		bounceBall(b);
 	}
 	
 	public boolean bounceBall(Ball b) {

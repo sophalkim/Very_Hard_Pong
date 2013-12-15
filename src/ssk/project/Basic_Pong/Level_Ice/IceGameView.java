@@ -43,9 +43,9 @@ public class IceGameView extends BaseLevel {
 		super.draw(canvas);	
 		// Drawing IceBlocks
 		for (int i = 0; i < iceBlocks.size(); i++) {
-			iceBlocks.get(i).update(canvas);
+			iceBlocks.get(i).update(canvas, b);
 		}		
 		// Drawing SolidBlock
-		sb.update(canvas);
+		sb.update(canvas, b);
 	}
 }
