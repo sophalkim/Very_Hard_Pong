@@ -54,7 +54,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 		super.onPause();
 		gameView.thread.setRunning(false);
 		if (playMusic) {
-			mp.pause();
+			mp.stop();
 		}
 	}
     

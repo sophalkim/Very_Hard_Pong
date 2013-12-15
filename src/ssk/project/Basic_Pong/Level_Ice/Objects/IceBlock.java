@@ -62,6 +62,16 @@ public class IceBlock extends GameUnit {
 		bounceBall(b);
 	}
 	
+	public void update2(Canvas canvas, Ball b, IceBlock ib) {
+		if (state == 2) {
+			render(canvas);
+		}
+		if (state == 1) {
+			canvas.drawBitmap(iceCrack, x, y, null);
+		}
+		bounceBall2(b, ib);
+	}
+	
 	public boolean bounceBall(Ball b) {
 		// Bounce off IceBlock Top
 		if (state > 0 && b.vY > 0 && Math.abs(b.y + b.h - y) <= 10 && b.x + b.w > x && b.x < x + w) {
@@ -86,6 +96,34 @@ public class IceBlock extends GameUnit {
 			b.vX = (-1) * b.vX;
 			state--;
 			playIceSfx();
+		}
+		return true;
+	}
+	
+	public boolean bounceBall2(Ball b, IceBlock ib) {
+		// Bounce off IceBlock Top
+		if (state > 0 && b.vY > 0 && Math.abs(b.y + b.h - y) <= 10 && b.x + b.w > x && b.x < x + w) {
+			b.vY = (-1) * b.vY;
+			state--;
+			ib.playIceSfx();
+		}		
+		// Bounce off IceBlock Bottom
+		if (state > 0 && b.vY < 0 && b.x + b.w >= x && b.x <= x + w && Math.abs(b.y - (y + h)) <= 10) {
+			b.vY = (-1) * b.vY;
+			state--;
+			ib.playIceSfx();
+		}	
+		// Bounce off IceBlock Left
+		if (state > 0 && b.vX > 0 && b.y + b.h >= y && b.y <= y + h && Math.abs(b.x + b.w - x) <= 10) {
+			b.vX = (-1) * b.vX;
+			state--;
+			ib.playIceSfx();
+		}		
+		// Bounce off IceBlock Right
+		if (state > 0 && b.vX < 0 && b.y + b.h >= y && b.y <= y + h && Math.abs(b.x - (x + w)) <= 10) {
+			b.vX = (-1) * b.vX;
+			state--;
+			ib.playIceSfx();
 		}
 		return true;
 	}
