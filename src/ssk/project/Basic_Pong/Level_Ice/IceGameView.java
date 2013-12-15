@@ -16,7 +16,6 @@ public class IceGameView extends BaseLevel {
 	int iceHit;
 	List<IceBlock> iceBlocks = new ArrayList<IceBlock>();
 	// Level Variables
-	int ballHits = 0;
 	int iceblockQuantity = 16;
 	IceBlock ib;
 	SolidBlock sb;
@@ -41,7 +40,6 @@ public class IceGameView extends BaseLevel {
 	@Override
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
-		ib.update(canvas, b);
 		// Drawing IceBlocks
 		for (int i = 0; i < iceBlocks.size(); i++) {
 			iceBlocks.get(i).update2(canvas, b, ib);
