@@ -14,16 +14,16 @@ import android.view.SurfaceView;
 
 public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
-	int screenW;
-	int screenH;
-	int ballHits = 0;
-	boolean pause = false;
-	Context context;
-	BaseThread thread;
-	Bitmap bgBitmap;
-	GameText gt;
-	Paddle p;
-	Ball b;
+	public int screenW;
+	public int screenH;
+	public int ballHits = 0;
+	public boolean pause = false;
+	public Context context;
+	public BaseThread thread;
+	public Bitmap bgBitmap;
+	public GameText gt;
+	public Paddle p;
+	public Ball b;
 	
 	public BaseLevel(Context context) {
 		super(context);
