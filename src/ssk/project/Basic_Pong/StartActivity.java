@@ -1,7 +1,6 @@
 package ssk.project.Basic_Pong;
 
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.Basic_Pong.Level_Ice_2.IceGameActivity2;
 import ssk.project.Basic_Pong.Level_Ice_3.IceGameActivity3;
 import ssk.project.Basic_Pong.Level_Ice_4.IceGameActivity4;
 import ssk.project.Basic_Pong.Level_Volcano.VolcanoGameActivity;
@@ -122,7 +121,9 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startIce2() {
-    	i = new Intent(StartActivity.this, IceGameActivity2.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 6);
+    	i.putExtra("Music", 5);
     	startActivity(i);
     }
     

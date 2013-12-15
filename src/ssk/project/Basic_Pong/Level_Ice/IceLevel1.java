@@ -14,12 +14,11 @@ import android.graphics.Canvas;
 
 public class IceLevel1 extends BaseLevel {
 	
-	List<IceBlock> iceBlocks = new ArrayList<IceBlock>();
-	// Level Variables
-	int iceHit = 0;
-	int iceblockQuantity = 8;
-	IceBlock ib;
-	SolidBlock sb;
+	public int iceHit = 0;
+	public int iceblockQuantity = 8;
+	public IceBlock ib;
+	public SolidBlock sb;
+	public List<IceBlock> iceBlocks = new ArrayList<IceBlock>();
 		
 	public IceLevel1(Context context) {
 		super(context);
@@ -53,7 +52,6 @@ public class IceLevel1 extends BaseLevel {
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
 		updateIceBlocks(canvas);
-		// Drawing SolidBlock
 		sb.update(canvas, b);
 	}
 	
