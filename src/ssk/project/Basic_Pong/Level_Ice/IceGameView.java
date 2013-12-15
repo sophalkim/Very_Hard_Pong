@@ -46,11 +46,7 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 	private SoundPool soundPool;
 	private int ballHitWall;
 	private int ballHitPaddle;
-	private int ballHitIceBlock;
 	private int ballHitSolidBlock;
-	// IceBlocks
-	Bitmap iceblock;
-	Bitmap iceblockCracked;
 	int iceHit;
 	List<IceBlock> iceBlocks = new ArrayList<IceBlock>();
 	// Level Variables
@@ -66,21 +62,21 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 	long pTime = 0;
 	long cTime;
 	long dTime;
+	IceBlock ib;
+	Context context;
 		
 	public IceGameView(Context context) {
 		super(context);
+		this.context = context;
 
 		paddleBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_paddle);		
-		ballBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.metal_ball);		
-		iceblock = BitmapFactory.decodeResource(getResources(), R.drawable.iceblock);
-		iceblockCracked = BitmapFactory.decodeResource(getResources(), R.drawable.iceblock_cracked);		
+		ballBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.metal_ball);			
 		backgroundBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
 		solidBlockBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.solidblock);
 		
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 		ballHitWall = soundPool.load(context, R.raw.bounce_wall, 1);
 		ballHitPaddle = soundPool.load(context, R.raw.bounce_paddle, 1);
-		ballHitIceBlock = soundPool.load(context, R.raw.ice_cracking_sound_effect, 1);
 		ballHitSolidBlock = soundPool.load(context, R.raw.solid_block_sound_effect, 1);
 		
 		paint.setColor(Color.GREEN);
@@ -115,25 +111,13 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 		paddleHeight = paddleBitmap.getHeight();
 		paddleX = screenWidth / 2 - (paddleWidth / 2);
 		paddleY = screenHeight - screenHeight / 10;
-		// Initialize IceBlocks
-		iceblock = Bitmap.createScaledBitmap(iceblock, screenWidth / 10, screenWidth / 10, false);
-		iceblockCracked = Bitmap.createScaledBitmap(iceblockCracked, screenWidth / 10, screenWidth / 10, false);
+		
+		ib = new IceBlock(this, context, screenWidth, screenHeight);
 		for (int i = 0; i < (iceblockQuantity / 2); i++) {
-			IceBlock ice = new IceBlock();
-			ice.iceBlockWidth = iceblock.getWidth();
-			ice.iceBlockHeight = iceblock.getHeight();
-			ice.iceBlockY = screenHeight / 2 - iceblock.getHeight();
-			ice.iceBlockX = (i * iceblock.getWidth() + 10);
+			IceBlock ice = new IceBlock(ib, i * ib.w + 10, screenHeight / 2);
 			iceBlocks.add(ice);
 		}
-		for (int i = 0; i < (iceblockQuantity / 2); i++) {
-			IceBlock ice = new IceBlock();
-			ice.iceBlockWidth = iceblock.getWidth();
-			ice.iceBlockHeight = iceblock.getHeight();
-			ice.iceBlockY = screenHeight / 2;
-			ice.iceBlockX = (i * iceblock.getWidth() + 10);
-			iceBlocks.add(ice);
-		}
+		
 		// Initialize SolidBlock
 		solidBlockBitmap = Bitmap.createScaledBitmap(solidBlockBitmap, screenWidth / 10, screenWidth / 10, false);
 		solidBlock = new SolidBlock();
@@ -240,43 +224,9 @@ public class IceGameView extends SurfaceView implements SurfaceHolder.Callback {
 		canvas.drawText("Hits : " + ballHits, 50, 50, paint);
 		// Drawing IceBlocks
 		for (int i = 0; i < iceBlocks.size(); i++) {
-			if (iceBlocks.get(i).iceBlockState == 2) {
-				canvas.drawBitmap(iceblock, iceBlocks.get(i).iceBlockX, iceBlocks.get(i).iceBlockY, null);
-			} else if (iceBlocks.get(i).iceBlockState == 1) {
-				canvas.drawBitmap(iceblockCracked, iceBlocks.get(i).iceBlockX, iceBlocks.get(i).iceBlockY, null);
-			}
+			iceBlocks.get(i).update(canvas);
 		}		
-		// IceBlocks Collision
-		for (int i = 0; i < iceBlocks.size(); i++) {
-			// Bounce off IceBlock Top
-			if (iceBlocks.get(i).iceBlockState > 0 && velocityY > 0 && Math.abs(ballY + ballHeight - iceBlocks.get(i).iceBlockY) <= 10 && ballX + ballWidth > iceBlocks.get(i).iceBlockX && ballX < iceBlocks.get(i).iceBlockX + iceBlocks.get(i).iceBlockWidth) {
-				velocityY = (-1) * velocityY;
-				iceBlocks.get(i).iceBlockState--;
-				iceHit++;
-				soundPool.play(ballHitIceBlock, 1, 1, 1, 0, 1);
-			}		
-			// Bounce off IceBlock Bottom
-			if (iceBlocks.get(i).iceBlockState > 0 && velocityY < 0 && ballX + ballWidth >= iceBlocks.get(i).iceBlockX && ballX <= iceBlocks.get(i).iceBlockX + iceBlocks.get(i).iceBlockWidth && Math.abs(ballY - (iceBlocks.get(i).iceBlockY + iceBlocks.get(i).iceBlockHeight)) <= 10) {
-				velocityY = (-1) * velocityY;
-				iceBlocks.get(i).iceBlockState--;
-				iceHit++;
-				soundPool.play(ballHitIceBlock, 1, 1, 1, 0, 1);
-			}	
-			// Bounce off IceBlock Left
-			if (iceBlocks.get(i).iceBlockState > 0 && velocityX > 0 && ballY + ballHeight >= iceBlocks.get(i).iceBlockY && ballY <= iceBlocks.get(i).iceBlockY + iceBlocks.get(i).iceBlockHeight && Math.abs(ballX + ballWidth - iceBlocks.get(i).iceBlockX) <= 10) {
-				velocityX = (-1) * velocityX;
-				iceBlocks.get(i).iceBlockState--;
-				iceHit++;
-				soundPool.play(ballHitIceBlock, 1, 1, 1, 0, 1);
-			}		
-			// Bounce off IceBlock Right
-			if (iceBlocks.get(i).iceBlockState > 0 && velocityX < 0 && ballY + ballHeight >= iceBlocks.get(i).iceBlockY && ballY <= iceBlocks.get(i).iceBlockY + iceBlocks.get(i).iceBlockHeight && Math.abs(ballX - (iceBlocks.get(i).iceBlockX + iceBlocks.get(i).iceBlockWidth)) <= 10) {
-				velocityX = (-1) * velocityX;
-				iceBlocks.get(i).iceBlockState--;
-				iceHit++;
-				soundPool.play(ballHitIceBlock, 1, 1, 1, 0, 1);
-			}
-		}
+		
 		// Setting Up Solid Block
 		cTime = System.currentTimeMillis();
 		dTime = cTime - pTime;

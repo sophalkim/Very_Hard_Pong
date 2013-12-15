@@ -11,8 +11,8 @@ import android.view.View;
 
 public class Ball extends GameUnit {
 
-	float vX;
-	float vY;
+	public float vX;
+	public float vY;
 	int angle;
 	int paddleSfx;
 	int wallSfx;
