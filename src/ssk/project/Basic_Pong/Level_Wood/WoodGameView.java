@@ -1,7 +1,7 @@
 package ssk.project.Basic_Pong.Level_Wood;
 import java.util.Random;
 
-import ssk.project.Basic_Pong.Modular.BaseThread;
+import ssk.project.BaseClasses.BaseThread;
 import ssk.project.Basic_Pong.model.Explosion;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;

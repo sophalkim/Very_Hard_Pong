@@ -1,14 +1,13 @@
 package ssk.project.Basic_Pong;
 
+import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.Basic_Pong.Level_Volcano_2.VolcanoGameActivity2;
 import ssk.project.Basic_Pong.Level_Volcano_3.VolcanoGameActivity3;
 import ssk.project.Basic_Pong.Level_Volcano_4.VolcanoGameActivity4;
 import ssk.project.Basic_Pong.Level_Wood.WoodGameActivity;
 import ssk.project.Basic_Pong.Level_Wood_2.WoodGameActivity2;
 import ssk.project.Basic_Pong.Level_Wood_3.WoodGameActivity3;
 import ssk.project.Basic_Pong.Level_Wood_4.WoodGameActivity4;
-import ssk.project.Basic_Pong.Modular.BaseActivity;
 import ssk.project.Pong_Basic.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -98,7 +97,9 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startVolcano2() {
-    	i = new Intent(StartActivity.this, VolcanoGameActivity2.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 6);
+    	i.putExtra("Music", 2);
     	startActivity(i);
     }
     

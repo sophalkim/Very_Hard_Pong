@@ -2,8 +2,8 @@ package ssk.project.Basic_Pong.Level_Ice;
 import java.util.ArrayList;
 import java.util.List;
 
-import ssk.project.Basic_Pong.Modular.BaseActivity;
-import ssk.project.Basic_Pong.Modular.BaseLevel;
+import ssk.project.BaseClasses.BaseActivity;
+import ssk.project.BaseClasses.BaseLevel;
 import ssk.project.GameUnits.IceBlock;
 import ssk.project.GameUnits.SolidBlock;
 import ssk.project.Pong_Basic.R;

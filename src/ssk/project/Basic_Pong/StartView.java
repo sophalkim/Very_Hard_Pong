@@ -1,6 +1,6 @@
 package ssk.project.Basic_Pong;
 
-import ssk.project.Basic_Pong.Modular.BaseThread;
+import ssk.project.BaseClasses.BaseThread;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.content.SharedPreferences;

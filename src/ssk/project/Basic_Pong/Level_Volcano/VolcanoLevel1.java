@@ -1,6 +1,6 @@
 package ssk.project.Basic_Pong.Level_Volcano;
-import ssk.project.Basic_Pong.Modular.BaseActivity;
-import ssk.project.Basic_Pong.Modular.BaseLevel;
+import ssk.project.BaseClasses.BaseActivity;
+import ssk.project.BaseClasses.BaseLevel;
 import ssk.project.GameUnits.Ball;
 import android.content.Context;
 import android.graphics.Canvas;
