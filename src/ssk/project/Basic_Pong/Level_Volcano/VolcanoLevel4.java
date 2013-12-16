@@ -1,13 +1,16 @@
 package ssk.project.Basic_Pong.Level_Volcano;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.GameUnits.Ball;
+import ssk.project.GameUnits.PowerUp;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.view.MotionEvent;
 
 
 public class VolcanoLevel4 extends VolcanoLevel3 {
 
 	Ball b5;
+	PowerUp pu;
 	boolean ball5Start = false;
 	
 	public VolcanoLevel4(Context context) {
@@ -17,11 +20,21 @@ public class VolcanoLevel4 extends VolcanoLevel3 {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		gt.setVolcanoLevel(250);
+		pu = new PowerUp(this, context, screenW, screenH);
+	}
+	
+	public synchronized boolean onTouchEvent(MotionEvent event) {
+		super.onTouchEvent(event);
+		pu.onClick(event);
+		return true;
 	}
 	
 	@Override
 	public void levelEvent() {
 		super.levelEvent();
+		if (ballHits == 3 && pu.isAvailable()) {
+			pu.show();			
+		}
 		if (ballHits == 20) {
 			b5 = new Ball(b);
 			ball5Start = true;
@@ -60,4 +73,9 @@ public class VolcanoLevel4 extends VolcanoLevel3 {
 		}
 	}
 	
+	@Override
+	public void draw(Canvas canvas) {
+		super.draw(canvas);	
+		pu.update(canvas, p);
+	}
 }

@@ -9,7 +9,7 @@ import android.graphics.Canvas;
 public class VolcanoLevel1 extends BaseLevel {
 
 	Ball b2;
-	boolean ballStart = false;
+	boolean ball2Start = false;
 	
 	public VolcanoLevel1(Context context) {
 		super(context);
@@ -23,7 +23,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	public void levelEvent() {
 		if (ballHits == 4) {
 			b2 = new Ball(b);
-			ballStart = true;
+			ball2Start = true;
 		}
 	}
 	
@@ -39,7 +39,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	@Override
 	public void loseCondition() {
 		super.loseCondition();
-		if (ballStart) {
+		if (ball2Start) {
 			if (b2.y > (b2.screenH - b2.h)) {
 			thread.setRunning(false);
 			pause = true;
@@ -51,7 +51,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	@Override
 	public void updateBall(Canvas canvas) {
 		super.updateBall(canvas);
-		if (ballStart) {
+		if (ball2Start) {
 			b2.update2(canvas, b);
 			if (b2.bouncePaddle2(p, b)) {
 				ballHits++;
