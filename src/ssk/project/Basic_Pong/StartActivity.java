@@ -1,7 +1,6 @@
 package ssk.project.Basic_Pong;
 
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.Basic_Pong.Level_Volcano.VolcanoGameActivity;
 import ssk.project.Basic_Pong.Level_Volcano_2.VolcanoGameActivity2;
 import ssk.project.Basic_Pong.Level_Volcano_3.VolcanoGameActivity3;
 import ssk.project.Basic_Pong.Level_Volcano_4.VolcanoGameActivity4;
@@ -92,7 +91,9 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startVolcano() {
-    	i = new Intent(StartActivity.this, VolcanoGameActivity.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 5);
+    	i.putExtra("Music", 2);
     	startActivity(i);
     }
     
@@ -113,29 +114,29 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     
     public void startIce() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 5);
-    	i.putExtra("Music", 5);
+    	i.putExtra("Level", 1);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
     public void startIce2() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 6);
-    	i.putExtra("Music", 5);
+    	i.putExtra("Level", 2);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
     public void startIce3() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 7);
-    	i.putExtra("Music", 5);
+    	i.putExtra("Level", 3);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
     public void startIce4() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 8);
-    	i.putExtra("Music", 5);
+    	i.putExtra("Level", 4);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
