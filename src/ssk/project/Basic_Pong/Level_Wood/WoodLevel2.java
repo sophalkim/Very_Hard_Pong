@@ -16,7 +16,7 @@ public class WoodLevel2 extends WoodLevel1 {
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		li2 = new Lightning(li);
+		li2 = new Lightning(li, context);
 	}
 	
 	@Override
