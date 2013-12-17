@@ -90,10 +90,28 @@ public class PowerUp extends GameUnit {
 		}
 	}
 	
+	public void shrink(Paddle p) {
+		if (clicked) {
+			p.bitmap = Bitmap.createScaledBitmap(p.bitmap, screenW / 6, screenH / 40, false);
+			p.w = p.bitmap.getWidth();
+			p.h = p.bitmap.getHeight();
+			playPowerUpSfx();
+			clicked = false;
+			available = false;
+			visible = false;
+		}
+	}
+	
 	public void update(Canvas canvas, Paddle p) {
 		rotate();
 		scale(canvas);
 		consume(p);
+	}
+	
+	public void updateShrink(Canvas canvas, Paddle p) {
+		rotate();
+		scale(canvas);
+		shrink(p);
 	}
 	
 	public void onClick(MotionEvent event) {
