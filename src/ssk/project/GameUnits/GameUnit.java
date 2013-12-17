@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 
 public class GameUnit {
 
@@ -19,9 +20,15 @@ public class GameUnit {
 	public Rect rect;
 	public Bitmap bitmap;
 	public SoundPool soundPool;
+	boolean soundLoaded = false;
 	
 	public GameUnit() {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
+		    public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {
+		       soundLoaded = true;
+		    }
+		});
 	}
 	public int getX() {
 		return x;
