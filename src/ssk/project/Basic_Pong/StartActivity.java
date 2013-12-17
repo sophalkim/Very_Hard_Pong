@@ -3,7 +3,6 @@ package ssk.project.Basic_Pong;
 
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.Basic_Pong.Level_Wood_2.WoodGameActivity2;
 import ssk.project.Basic_Pong.Level_Wood_3.WoodGameActivity3;
 import ssk.project.Basic_Pong.Level_Wood_4.WoodGameActivity4;
 import ssk.project.Pong_Basic.R;
@@ -75,7 +74,9 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startWood2() {
-    	i = new Intent(StartActivity.this, WoodGameActivity2.class);
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 10);
+    	i.putExtra("Music", 3);
     	startActivity(i);
     }
     
