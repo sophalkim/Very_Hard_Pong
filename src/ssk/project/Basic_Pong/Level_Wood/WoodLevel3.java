@@ -21,7 +21,7 @@ public class WoodLevel3 extends WoodLevel2 {
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		sbg = new ScrollingBackground(bgBitmap, screenW, screenH);
+		sbg = new ScrollingBackground(context, bgBitmap, screenW, screenH);
 		li3 = new Lightning(li, context, 3);
 		pu = new PowerUp(this, context, screenW, screenH);
 	}

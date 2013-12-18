@@ -32,7 +32,7 @@ public class SubLevel extends BaseLevel {
 			pu.show();			
 		}
 		if (ballHits == 4) {
-			b2 = new Ball(b);
+			b2 = new Ball(context, b);
 			ballStart = true;
 		}
 	}

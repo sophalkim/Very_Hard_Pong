@@ -11,6 +11,7 @@ import android.view.View;
 public class Paddle extends GameUnit {
 
 	public Paddle(View v, Context context, int screenW, int screenH) {
+		super(context);
 		this.screenW = screenW;
 		this.screenH = screenH;
 		bitmap = BitmapFactory.decodeResource(v.getResources(), R.drawable.lava_paddle);

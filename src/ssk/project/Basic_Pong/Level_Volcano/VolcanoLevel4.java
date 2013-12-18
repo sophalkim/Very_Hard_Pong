@@ -36,7 +36,7 @@ public class VolcanoLevel4 extends VolcanoLevel3 {
 			pu.show();			
 		}
 		if (ballHits == 20) {
-			b5 = new Ball(b);
+			b5 = new Ball(context, b);
 			ball5Start = true;
 		}
 	}

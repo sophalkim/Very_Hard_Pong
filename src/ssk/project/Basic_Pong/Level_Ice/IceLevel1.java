@@ -31,7 +31,7 @@ public class IceLevel1 extends BaseLevel {
 		gt.setIceLevel();
 		ib = new IceBlock(this, context, screenW, screenH);
 		for (int i = 0; i < (iceblockQuantity); i++) {
-			IceBlock ice = new IceBlock(ib, i * ib.w + 10, screenH / 2);
+			IceBlock ice = new IceBlock(context, ib, i * ib.w + 10, screenH / 2);
 			iceBlocks.add(ice);
 		}
 		sb = new SolidBlock(this, context, screenW, screenH);

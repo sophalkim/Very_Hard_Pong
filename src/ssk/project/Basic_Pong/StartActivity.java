@@ -67,6 +67,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 1);
     	i.putExtra("Music", 1);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -74,6 +76,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 2);
     	i.putExtra("Music", 1);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -81,6 +85,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 3);
     	i.putExtra("Music", 1);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -88,6 +94,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 4);
     	i.putExtra("Music", 1);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -95,6 +103,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 5);
     	i.putExtra("Music", 2);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -102,6 +112,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 6);
     	i.putExtra("Music", 2);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -109,6 +121,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 7);
     	i.putExtra("Music", 2);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -116,6 +130,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 8);
     	i.putExtra("Music", 2);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -123,6 +139,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 9);
     	i.putExtra("Music", 3);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -130,6 +148,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 10);
     	i.putExtra("Music", 3);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -137,6 +157,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 11);
     	i.putExtra("Music", 3);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -144,6 +166,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 12);
     	i.putExtra("Music", 3);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -151,6 +175,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 13);
     	i.putExtra("Music", 4);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -158,6 +184,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 13);
     	i.putExtra("Music", 4);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     
@@ -165,6 +193,8 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	i = new Intent(StartActivity.this, BaseActivity.class);
     	i.putExtra("Level", 13);
     	i.putExtra("Music", 4);
+    	i.putExtra("playSound", playSound);
+    	i.putExtra("playMusic", playMusic);
     	startActivity(i);
     }
     

@@ -20,6 +20,7 @@ public class PowerUp extends GameUnit {
 	boolean scaling = false;
 
 	public PowerUp(View v, Context context, int screenW, int screenH) {
+		super(context);
 		this.screenW = screenW;
 		this.screenH = screenH;
 		powerUpSfx = soundPool.load(context, R.raw.power_up_sound_effect, 1);

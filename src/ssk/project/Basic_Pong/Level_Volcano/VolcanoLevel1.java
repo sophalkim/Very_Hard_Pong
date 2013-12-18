@@ -22,7 +22,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	
 	public void levelEvent() {
 		if (ballHits == 4) {
-			b2 = new Ball(b);
+			b2 = new Ball(context, b);
 			ball2Start = true;
 		}
 	}
