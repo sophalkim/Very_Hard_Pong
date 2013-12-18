@@ -28,7 +28,7 @@ public class WoodLevel1 extends BaseLevel {
 	
 	@Override
 	public void draw(Canvas canvas) {
-		super.draw(canvas);	
+		super.draw(canvas);
 		wt.updateText(canvas);
 		li.update(canvas, p);
 	}
