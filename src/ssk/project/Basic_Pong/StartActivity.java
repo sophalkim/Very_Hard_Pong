@@ -63,32 +63,31 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 			mp.release();
 		}
 	}
-    
-    public void startWood() {
+    public void startIce() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 9);
-    	i.putExtra("Music", 3);
+    	i.putExtra("Level", 1);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
-    public void startWood2() {
+    public void startIce2() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 10);
-    	i.putExtra("Music", 3);
+    	i.putExtra("Level", 2);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
-    public void startWood3() {
+    public void startIce3() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 11);
-    	i.putExtra("Music", 3);
+    	i.putExtra("Level", 3);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
-    public void startWood4() {
+    public void startIce4() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 12);
-    	i.putExtra("Music", 3);
+    	i.putExtra("Level", 4);
+    	i.putExtra("Music", 1);
     	startActivity(i);
     }
     
@@ -120,58 +119,58 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     	startActivity(i);
     }
     
-    public void startIce() {
+    public void startWood() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 1);
-    	i.putExtra("Music", 1);
+    	i.putExtra("Level", 9);
+    	i.putExtra("Music", 3);
     	startActivity(i);
     }
     
-    public void startIce2() {
+    public void startWood2() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 2);
-    	i.putExtra("Music", 1);
+    	i.putExtra("Level", 10);
+    	i.putExtra("Music", 3);
     	startActivity(i);
     }
     
-    public void startIce3() {
+    public void startWood3() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 3);
-    	i.putExtra("Music", 1);
+    	i.putExtra("Level", 11);
+    	i.putExtra("Music", 3);
     	startActivity(i);
     }
     
-    public void startIce4() {
+    public void startWood4() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 4);
-    	i.putExtra("Music", 1);
+    	i.putExtra("Level", 12);
+    	i.putExtra("Music", 3);
     	startActivity(i);
     }
     
     public void startBeach1() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 1);
-    	i.putExtra("Music", 1);
+    	i.putExtra("Level", 13);
+    	i.putExtra("Music", 4);
     	startActivity(i);
     }
     
     public void startBeach2() {
-    	AudioPreferences audioDialog = new AudioPreferences();
-		audioDialog.show(getSupportFragmentManager(), "missisles");
+    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i.putExtra("Level", 13);
+    	i.putExtra("Music", 4);
+    	startActivity(i);
     }
     
     public void startBeach3() {
     	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 2);
-    	i.putExtra("Music", 2);
+    	i.putExtra("Level", 13);
+    	i.putExtra("Music", 4);
     	startActivity(i);
     }
     
     public void startBeach4() {
-    	i = new Intent(StartActivity.this, BaseActivity.class);
-    	i.putExtra("Level", 3);
-    	i.putExtra("Music", 3);
-    	startActivity(i);
+    	AudioPreferences audioDialog = new AudioPreferences();
+		audioDialog.show(getSupportFragmentManager(), "missisles");
     }
 
 	@Override
