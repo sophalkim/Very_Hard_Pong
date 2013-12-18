@@ -1,4 +1,4 @@
-package ssk.project.Basic_Pong.Level_Beach_1;
+package ssk.project.Basic_Pong.Level_Beach;
 import android.content.Context;
 
 

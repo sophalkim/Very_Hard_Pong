@@ -36,7 +36,7 @@
         <activity android:name="ssk.project.Basic_Pong.Level_Forest.ForestGameActivity2" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Forest.ForestGameActivity3" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Forest.ForestGameActivity4" android:screenOrientation="portrait"></activity>
-        <activity android:name="ssk.project.Basic_Pong.Level_Beach_1.BeachGameActivity1" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.Basic_Pong.Level_Beach.BeachGameActivity1" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_2.BeachGameActivity2" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4" android:screenOrientation="portrait"></activity>
