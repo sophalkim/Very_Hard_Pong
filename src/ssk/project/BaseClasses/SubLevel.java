@@ -18,7 +18,7 @@ public class SubLevel extends BaseLevel {
 	
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		pu = new PowerUp(this, context, screenW, screenH);
+		pu = new PowerUp(this, context, screenW, screenH, playSound);
 	}
 	
 	public synchronized boolean onTouchEvent(MotionEvent event) {
@@ -32,7 +32,7 @@ public class SubLevel extends BaseLevel {
 			pu.show();			
 		}
 		if (ballHits == 4) {
-			b2 = new Ball(context, b);
+			b2 = new Ball(context, b, playSound);
 			ballStart = true;
 		}
 	}

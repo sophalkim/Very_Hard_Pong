@@ -20,7 +20,7 @@ public class VolcanoLevel4 extends VolcanoLevel3 {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		gt.setVolcanoLevel(250);
-		pu = new PowerUp(this, context, screenW, screenH);
+		pu = new PowerUp(this, context, screenW, screenH, playSound);
 	}
 	
 	public synchronized boolean onTouchEvent(MotionEvent event) {
@@ -36,7 +36,7 @@ public class VolcanoLevel4 extends VolcanoLevel3 {
 			pu.show();			
 		}
 		if (ballHits == 20) {
-			b5 = new Ball(context, b);
+			b5 = new Ball(context, b, playSound);
 			ball5Start = true;
 		}
 	}

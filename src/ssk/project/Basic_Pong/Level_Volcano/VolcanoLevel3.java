@@ -23,7 +23,7 @@ public class VolcanoLevel3 extends VolcanoLevel2 {
 	public void levelEvent() {
 		super.levelEvent();
 		if (ballHits == 14) {
-			b4 = new Ball(context, b);
+			b4 = new Ball(context, b, playSound);
 			ball4Start = true;
 		}
 	}

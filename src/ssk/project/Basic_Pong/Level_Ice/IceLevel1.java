@@ -29,12 +29,12 @@ public class IceLevel1 extends BaseLevel {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		gt.setIceLevel();
-		ib = new IceBlock(this, context, screenW, screenH);
+		ib = new IceBlock(this, context, screenW, screenH, playSound);
 		for (int i = 0; i < (iceblockQuantity); i++) {
-			IceBlock ice = new IceBlock(context, ib, i * ib.w + 10, screenH / 2);
+			IceBlock ice = new IceBlock(context, ib, i * ib.w + 10, screenH / 2, playSound);
 			iceBlocks.add(ice);
 		}
-		sb = new SolidBlock(this, context, screenW, screenH);
+		sb = new SolidBlock(this, context, screenW, screenH, playSound);
 	}
 	
 	public void updateIceBlocks(Canvas canvas) {

@@ -23,7 +23,7 @@ public class WoodLevel1 extends BaseLevel {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		wt = new WarningText(screenW, screenH);
-		li = new Lightning(this, context, screenW, screenH);
+		li = new Lightning(this, context, screenW, screenH, playSound);
 	}
 	
 	@Override

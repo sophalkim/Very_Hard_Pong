@@ -1,14 +1,11 @@
 package ssk.project.GameUnits;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
-import android.preference.PreferenceManager;
 
 public class GameUnit {
 
@@ -25,24 +22,17 @@ public class GameUnit {
 	public SoundPool soundPool;
 	boolean soundLoaded = false;
 	
-	SharedPreferences sp;
 	boolean playSound = true;
 	
-	public GameUnit(Context context) {
+	public GameUnit() {
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 		soundPool.setOnLoadCompleteListener(new OnLoadCompleteListener() {
 		    public void onLoadComplete(SoundPool soundPool, int sampleId,int status) {
 		       soundLoaded = true;
 		    }
 		});
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-		playSound = sp.getBoolean("SOUND", true);
-		if (playSound) {
-			soundPool.autoResume();
-		} else {
-			soundPool.autoPause();
-		}
 	}
+	
 	public int getX() {
 		return x;
 	}

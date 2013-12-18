@@ -22,8 +22,8 @@ public class WoodLevel3 extends WoodLevel2 {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		sbg = new ScrollingBackground(context, bgBitmap, screenW, screenH);
-		li3 = new Lightning(li, context, 3);
-		pu = new PowerUp(this, context, screenW, screenH);
+		li3 = new Lightning(li, context, 3, playSound);
+		pu = new PowerUp(this, context, screenW, screenH, playSound);
 	}
 	
 	public synchronized boolean onTouchEvent(MotionEvent event) {

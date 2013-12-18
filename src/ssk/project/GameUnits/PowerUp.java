@@ -19,8 +19,8 @@ public class PowerUp extends GameUnit {
 	boolean clicked = false;
 	boolean scaling = false;
 
-	public PowerUp(View v, Context context, int screenW, int screenH) {
-		super(context);
+	public PowerUp(View v, Context context, int screenW, int screenH, boolean playSound) {
+		this.playSound = playSound;
 		this.screenW = screenW;
 		this.screenH = screenH;
 		powerUpSfx = soundPool.load(context, R.raw.power_up_sound_effect, 1);
@@ -34,7 +34,9 @@ public class PowerUp extends GameUnit {
 	}
 	
 	public void playPowerUpSfx() {
-		soundPool.play(powerUpSfx, 1, 1, 1, 0, 1);
+		if (playSound) {
+			soundPool.play(powerUpSfx, 1, 1, 1, 0, 1);
+		}
 	}
 	
 	public void rotate() {

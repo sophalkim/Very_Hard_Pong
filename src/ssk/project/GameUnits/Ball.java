@@ -18,12 +18,12 @@ public class Ball extends GameUnit {
 	int wallSfx;
 	Random r = new Random();
 	
-	public Ball(Context context) {
-		super(context);
+	public Ball(boolean playSound) {
+		this.playSound = playSound;
 	}
 	
-	public Ball(View v, Context context, int screenW, int screenH) {
-		super(context);
+	public Ball(View v, Context context, int screenW, int screenH, boolean playSound) {
+		this.playSound = playSound;
 		this.screenW = screenW;
 		this.screenH = screenH;
 		paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
@@ -39,8 +39,8 @@ public class Ball extends GameUnit {
 		randomDirection();
 	}
 	
-	public Ball(Context context, Ball b) {
-		super(context);
+	public Ball(Context context, Ball b, boolean playSound) {
+		this.playSound = playSound;
 		screenW = b.screenW;
 		screenH = b.screenH;
 		bitmap = b.bitmap;
@@ -158,10 +158,14 @@ public class Ball extends GameUnit {
 	}
 	
 	public void playPaddleSfx() {
-		soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
+		if (playSound) {
+			soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
+		}
 	}
 	
 	public void playWallSfx() {
-		soundPool.play(wallSfx, 1, 1, 1, 0, 1);
+		if (playSound) {
+			soundPool.play(wallSfx, 1, 1, 1, 0, 1);
+		}
 	}
 }

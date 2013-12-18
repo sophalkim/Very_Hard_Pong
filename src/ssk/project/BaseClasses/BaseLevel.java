@@ -5,9 +5,11 @@ import ssk.project.GameUnits.GameText;
 import ssk.project.GameUnits.Paddle;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -25,12 +27,18 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	public Paddle p;
 	public Ball b;
 	
+	SharedPreferences sp;
+	public boolean playSound = true;
+	
 	public BaseLevel(Context context) {
 		super(context);
 		this.context = context;
 		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.volcano);
 		getHolder().addCallback(this);
 		setFocusable(true);
+		
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+		playSound = sp.getBoolean("SOUND", true);
 	}
 	
 	@Override
@@ -40,7 +48,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		screenH = h;
 		bgBitmap = Bitmap.createScaledBitmap(bgBitmap, screenW, screenH, false);
 		gt = new GameText();
-		b = new Ball(this, context, screenW, screenH);
+		b = new Ball(this, context, screenW, screenH, playSound);
 		p = new Paddle(this, context, screenW, screenH);
 	}
 	
