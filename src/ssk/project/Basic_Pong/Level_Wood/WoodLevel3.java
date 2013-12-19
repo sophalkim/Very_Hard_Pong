@@ -47,7 +47,9 @@ public class WoodLevel3 extends WoodLevel2 {
 		winCondition();
 		loseCondition();
 		levelEvent();
+		li.update(canvas, p);
 		li2.update(canvas, p);
+		li3.update(canvas, p);
 		pu.updateShrink(canvas, p);
 	}
 	
