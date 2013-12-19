@@ -5,6 +5,7 @@ import java.util.List;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.BaseClasses.BaseLevel;
 import ssk.project.GameUnits.IceBlock;
+import ssk.project.GameUnits.Paddle;
 import ssk.project.GameUnits.SolidBlock;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
@@ -29,6 +30,7 @@ public class IceLevel1 extends BaseLevel {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		gt.setIceLevel();
+		p.setPaddleBitmap(this, Paddle.ICE);
 		ib = new IceBlock(this, context, screenW, screenH, playSound);
 		for (int i = 0; i < (iceblockQuantity); i++) {
 			IceBlock ice = new IceBlock(context, ib, i * ib.w + 10, screenH / 2, playSound);

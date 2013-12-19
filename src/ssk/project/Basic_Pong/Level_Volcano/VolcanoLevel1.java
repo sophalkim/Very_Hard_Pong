@@ -2,6 +2,7 @@ package ssk.project.Basic_Pong.Level_Volcano;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.BaseClasses.BaseLevel;
 import ssk.project.GameUnits.Ball;
+import ssk.project.GameUnits.Paddle;
 import android.content.Context;
 import android.graphics.Canvas;
 
@@ -18,6 +19,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
 		gt.setVolcanoLevel(30);
+		p.setPaddleBitmap(this, Paddle.VOLCANO);
 	}
 	
 	public void levelEvent() {

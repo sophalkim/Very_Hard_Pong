@@ -49,7 +49,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		bgBitmap = Bitmap.createScaledBitmap(bgBitmap, screenW, screenH, false);
 		gt = new GameText();
 		b = new Ball(this, context, screenW, screenH, playSound);
-		p = new Paddle(this, context, screenW, screenH);
+		p = new Paddle(this, context, screenW, screenH, Paddle.ICE);
 	}
 	
 	public void winCondition() {
