@@ -53,19 +53,20 @@ public final class R {
         public static final int iceblock_cracked=0x7f02000b;
         public static final int lava_paddle=0x7f02000c;
         public static final int lightning=0x7f02000d;
-        public static final int lock=0x7f02000e;
-        public static final int lose_background=0x7f02000f;
-        public static final int metal_ball=0x7f020010;
-        public static final int paddle=0x7f020011;
-        public static final int power_up=0x7f020012;
-        public static final int solidblock=0x7f020013;
-        public static final int splash_screen=0x7f020014;
-        public static final int start_background_image=0x7f020015;
-        public static final int twisted_metal_bar=0x7f020016;
-        public static final int volcano=0x7f020017;
-        public static final int win_background=0x7f020018;
-        public static final int win_layout_background=0x7f020019;
-        public static final int wood_flooring_background=0x7f02001a;
+        public static final int lightningbig=0x7f02000e;
+        public static final int lock=0x7f02000f;
+        public static final int lose_background=0x7f020010;
+        public static final int metal_ball=0x7f020011;
+        public static final int paddle=0x7f020012;
+        public static final int power_up=0x7f020013;
+        public static final int solidblock=0x7f020014;
+        public static final int splash_screen=0x7f020015;
+        public static final int start_background_image=0x7f020016;
+        public static final int twisted_metal_bar=0x7f020017;
+        public static final int volcano=0x7f020018;
+        public static final int win_background=0x7f020019;
+        public static final int win_layout_background=0x7f02001a;
+        public static final int wood_flooring_background=0x7f02001b;
     }
     public static final class id {
         public static final int button1=0x7f080003;
