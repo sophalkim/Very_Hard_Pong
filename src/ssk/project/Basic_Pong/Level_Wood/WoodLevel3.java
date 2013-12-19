@@ -2,14 +2,12 @@ package ssk.project.Basic_Pong.Level_Wood;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.GameUnits.Lightning3;
 import ssk.project.GameUnits.PowerUp;
-import ssk.project.GameUnits.ScrollingBackground;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
 public class WoodLevel3 extends WoodLevel2 {
 
-	ScrollingBackground sbg;
 	Lightning3 li3;
 	PowerUp pu;
 	
@@ -20,7 +18,6 @@ public class WoodLevel3 extends WoodLevel2 {
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		sbg = new ScrollingBackground(context, bgBitmap, screenW, screenH);
 		li3 = new Lightning3(this, context, screenW, screenH, playSound);
 		pu = new PowerUp(this, context, screenW, screenH, playSound);
 	}
@@ -40,15 +37,7 @@ public class WoodLevel3 extends WoodLevel2 {
 	
 	@Override
 	public void draw(Canvas canvas) {
-		sbg.update(canvas);
-		gt.updateText(canvas, screenW, screenH, ballHits);
-		p.update(canvas);
-		updateBall(canvas);
-		winCondition();
-		loseCondition();
-		levelEvent();
-		li.update(canvas, p);
-		li2.update(canvas, p);
+		super.draw(canvas);
 		li3.update(canvas, p);
 		pu.updateShrink(canvas, p);
 	}
