@@ -82,12 +82,12 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	@Override
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
+		winCondition();
+		loseCondition();
 		canvas.drawBitmap(bgBitmap, 0, 0, null);
 		gt.updateText(canvas, screenW, screenH, ballHits);
 		p.update(canvas);
 		updateBall(canvas);
-		winCondition();
-		loseCondition();
 	}
 	
 	@Override
