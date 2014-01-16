@@ -10,6 +10,9 @@ import android.graphics.Canvas;
 import android.view.View;
 
 public class Ball extends GameUnit {
+	
+	public static final int METAL = 1;
+	public static final int BEACH_BALL = 2;
 
 	public float vX;
 	public float vY;
@@ -51,6 +54,15 @@ public class Ball extends GameUnit {
 		vX = (-1) * b.vX;
 		vY = screenH / 150;
 		angle = 0;
+	}
+	
+	public void setBallBitmap(View v, int ballType) {
+		switch(ballType) {
+		case 1: bitmap = BitmapFactory.decodeResource(v.getResources(), R.drawable.metal_ball);
+		bitmap = Bitmap.createScaledBitmap(bitmap, screenW / 15, screenH / 20, false); break;
+		case 2: bitmap = BitmapFactory.decodeResource(v.getResources(), R.drawable.beachball);
+		bitmap = Bitmap.createScaledBitmap(bitmap, screenW / 10, screenH / 15, false); break;
+		}
 	}
 	
 	public void update(Canvas canvas) {

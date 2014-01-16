@@ -82,6 +82,11 @@ public class GameUnit {
 		this.rect = rect;
 	}
 	
+	public void releaseSfx() {
+		soundPool.release();
+		soundPool = null;
+	}
+	
 	public boolean collide(Rect r) {
 		return r.intersect(rect);
 	}

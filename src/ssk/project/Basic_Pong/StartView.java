@@ -85,6 +85,12 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	Paint levelPaint = new Paint();
 	
 	Bitmap lockBitmap;
+	Bitmap beachballBitmap;
+	float beachballscale = 1;
+	boolean beachballscaling = false;
+	Bitmap musicnoteBitmap;
+	int musicnoteangle = 0;
+	boolean musicnotereverse = false;
 	
 	boolean levelSelected = false;
 	boolean animationCompleted = false;
@@ -166,6 +172,11 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		
 		lockBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lock);
 		lockBitmap = Bitmap.createScaledBitmap(lockBitmap, iceCaveWidth / 4, iceCaveHeight / 4, false);
+		
+		beachballBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.beachball);
+		beachballBitmap = Bitmap.createScaledBitmap(beachballBitmap, screenWidth / 7, screenHeight / 11, false);
+		musicnoteBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.musicnote);
+		musicnoteBitmap = Bitmap.createScaledBitmap(musicnoteBitmap, iceCaveWidth / 4, iceCaveHeight / 4, false);
 	}
 	
 	@Override
@@ -228,19 +239,11 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	 					levelSelected = true;
 	 				}
 					// Beach Level Selected
-					if (x >= beachX && x <= beachX + beachWidth / 2 && y >= beachY && y <= beachY + beachHeight / 2) {
+					if (x >= beachX && x <= beachX + beachWidth && y >= beachY && y <= beachY + beachHeight / 2) {
 	 					beachSelected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= beachX + beachWidth / 2 && x <= beachX + beachWidth && y >= beachY && y <= beachY + beachHeight / 2) {
-						beach2Selected = true;
-	 					levelSelected = true;
-					}
-					if (x >= beachX && x <= beachX + beachWidth / 2 && y >= beachY + beachHeight / 2 && y <= beachY + beachHeight) {
-	 					beach3Selected = true;
-	 					levelSelected = true;
-	 				}
-					if (x >= beachX + beachWidth / 2 && x <= beachX + beachWidth && y >= beachY + beachHeight / 2 && y <= beachY + beachHeight) {
+					if (x >= beachX && x <= beachX + beachWidth && y >= beachY + beachHeight / 2 && y <= beachY + beachHeight) {
 	 					beach4Selected = true;
 	 					levelSelected = true;
 	 				}
@@ -299,13 +302,22 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 			canvas.drawBitmap(lockBitmap, woodX + woodWidth - woodWidth / 3 - woodWidth / 24, woodY + woodHeight - woodHeight / 3 - woodHeight / 16, null);
 			// Drawing Beach Level, number, and locks
 			canvas.drawBitmap(beach, beachX, beachY, null);
-			canvas.drawText("1", beachX + beachWidth / 4, beachY + beachHeight / 3, levelPaint);
-			canvas.drawText("2", beachX + beachWidth - beachWidth / 4, beachY + beachHeight / 3, levelPaint);
-			canvas.drawText("3", beachX + beachWidth / 4, beachY + beachHeight - beachHeight / 6, levelPaint);
-			canvas.drawText("4", beachX + beachWidth - beachWidth / 4, beachY + beachHeight - beachHeight / 6, levelPaint);
-			canvas.drawBitmap(lockBitmap, beachX + beachWidth - beachWidth / 3 - beachWidth / 24, beachY + beachHeight / 8, null);
-			canvas.drawBitmap(lockBitmap, beachX + beachWidth / 6 - beachWidth / 24, beachY + beachHeight - beachHeight / 3 - beachHeight / 16, null);
-			canvas.drawBitmap(lockBitmap, beachX + beachWidth - beachWidth / 3 - beachWidth / 24, beachY + beachHeight - beachHeight / 3 - beachHeight / 16, null);
+			// BeachBall
+			canvas.drawBitmap(beachballBitmap, (beachX + (beachWidth / 2)  - (beachballBitmap.getWidth() / 2)), (beachY + (beachHeight / 4) - beachballBitmap.getHeight() / 2), null);
+			// Music Note
+			if (!musicnotereverse) {
+				musicnoteangle++;
+			}
+			if (musicnotereverse) {
+				musicnoteangle--;
+			}
+			if (Math.abs(musicnoteangle) == 10) {
+				musicnotereverse = !musicnotereverse;
+			}
+			canvas.save();
+			canvas.rotate(musicnoteangle, (beachX + (beachWidth / 2)  - (musicnoteBitmap.getWidth() / 2)) + (musicnoteBitmap.getWidth() / 2), (beachY + (beachHeight / 2)) + musicnoteBitmap.getHeight() / 2);
+			canvas.drawBitmap(musicnoteBitmap,(beachX + (beachWidth / 2)  - (musicnoteBitmap.getWidth() / 2)), (beachY + (beachHeight / 2)) + musicnoteBitmap.getHeight() / 2, null);
+			canvas.restore();
 			// Drawing Select Stage Text
 			canvas.drawText("Select Stage", screenWidth / 2 - (paint.measureText("Select Stage") / 2), screenHeight / 2 + screenHeight / 64, paint);
 		}

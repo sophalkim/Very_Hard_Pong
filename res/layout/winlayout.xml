@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/winbackground2"
+    android:id="@+id/winlayoutid"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/win_background">
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/wintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
@@ -15,12 +16,23 @@
        	android:shadowRadius="4"  
        	android:shadowDx="1"  
        	android:shadowDy="1"
-        android:text="You Win" />
+       	android:textStyle="bold"
+        android:text="You Win"
+        android:layout_gravity="center" />
+    
+    <ImageView
+        android:id="@+id/smiley"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/smiley"
+        android:layout_gravity="center" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu" />
+        android:id="@+id/win_exit_button"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:background="@drawable/purple_marble_button"
+        android:text="Menu"
+        android:layout_gravity="center" />
 
 </LinearLayout>
