@@ -11,8 +11,6 @@ import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.media.AudioManager;
-import android.media.SoundPool;
 
 
 public class IceLevel1 extends BaseLevel {
@@ -28,7 +26,6 @@ public class IceLevel1 extends BaseLevel {
 	public IceLevel1(Context context) {
 		super(context);
 		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
-		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
 		iceSfx = soundPool.load(context, R.raw.ice_cracking_sound_effect, 1);
 		solidSfx = soundPool.load(context, R.raw.solid_block_sound_effect, 1);
 	}
