@@ -52,7 +52,7 @@ public class IceLevel1 extends BaseLevel {
 			iceBlocks.get(i).update2(canvas, ib);
 		}
 		for (int i = 0; i < iceBlocks.size(); i++) {
-			if (iceBlocks.get(i).bounceBall2(b, ib)) {
+			if (iceBlocks.get(i).bounceBall2(b, ib) && playSound) {
 				iceHit++;
 				sp.play(iceSfx, 1, 1, 1, 0, 1);
 			}
@@ -64,7 +64,7 @@ public class IceLevel1 extends BaseLevel {
 		super.draw(canvas);	
 		updateIceBlocks(canvas);
 		sb.update(canvas, b);
-		if (sb.bounceBall(b)) {
+		if (sb.bounceBall(b) && playSound) {
 			sp.play(solidSfx, 1, 1, 1, 0, 1);
 		}
 	}
