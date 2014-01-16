@@ -51,9 +51,9 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     @Override
 	public void onResume() {
 		super.onResume();
-		if (playMusic) {
-	        mp.start();
-        }
+//		if (playMusic) {
+//	        mp.start();
+//        }
 	}
     
     @Override
