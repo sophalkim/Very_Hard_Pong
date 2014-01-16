@@ -65,6 +65,8 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	public void winCondition() {
 		if (ballHits == 15) {
 			soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
+			soundPool.release();
+			soundPool = null;
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).winScreen();
@@ -73,6 +75,8 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
 	public void loseCondition() {
 		if (b.y > (b.screenH - b.h)) {
+			soundPool.release();
+			soundPool = null;
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).loseScreen();
