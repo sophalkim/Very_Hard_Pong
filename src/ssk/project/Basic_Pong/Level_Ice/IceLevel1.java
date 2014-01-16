@@ -22,16 +22,15 @@ public class IceLevel1 extends BaseLevel {
 	public IceBlock ib;
 	public SolidBlock sb;
 	public List<IceBlock> iceBlocks = new ArrayList<IceBlock>();
-	SoundPool sp;
 	int iceSfx;
 	int solidSfx;
 		
 	public IceLevel1(Context context) {
 		super(context);
 		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
-		sp = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-		iceSfx = sp.load(context, R.raw.ice_cracking_sound_effect, 1);
-		solidSfx = sp.load(context, R.raw.solid_block_sound_effect, 1);
+		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+		iceSfx = soundPool.load(context, R.raw.ice_cracking_sound_effect, 1);
+		solidSfx = soundPool.load(context, R.raw.solid_block_sound_effect, 1);
 	}
 	
 	@Override
@@ -54,7 +53,7 @@ public class IceLevel1 extends BaseLevel {
 		for (int i = 0; i < iceBlocks.size(); i++) {
 			if (iceBlocks.get(i).bounceBall2(b, ib) && playSound) {
 				iceHit++;
-				sp.play(iceSfx, 1, 1, 1, 0, 1);
+				soundPool.play(iceSfx, 1, 1, 1, 0, 1);
 			}
 		}
 	}
@@ -65,7 +64,7 @@ public class IceLevel1 extends BaseLevel {
 		updateIceBlocks(canvas);
 		sb.update(canvas, b);
 		if (sb.bounceBall(b) && playSound) {
-			sp.play(solidSfx, 1, 1, 1, 0, 1);
+			soundPool.play(solidSfx, 1, 1, 1, 0, 1);
 		}
 	}
 	

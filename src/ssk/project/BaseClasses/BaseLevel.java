@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -27,6 +29,10 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	public Paddle p;
 	public Ball b;
 	
+	public SoundPool soundPool;
+	public int paddleSfx;
+	public int wallSfx;
+	
 	SharedPreferences sp;
 	public boolean playSound = true;
 	
@@ -39,6 +45,10 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
 		playSound = sp.getBoolean("SOUND", true);
+		
+		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+		paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
+		wallSfx = soundPool.load(context, R.raw.bounce_wall, 1);
 	}
 	
 	@Override
@@ -54,8 +64,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
 	public void winCondition() {
 		if (ballHits == 15) {
-			b.playPaddleSfx();
-			b.releaseSfx();
+			soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).winScreen();
@@ -64,7 +73,6 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	
 	public void loseCondition() {
 		if (b.y > (b.screenH - b.h)) {
-			b.releaseSfx();
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).loseScreen();
@@ -75,6 +83,12 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		b.update(canvas);
 		if (b.bouncePaddle(p)) {
 			ballHits++;
+			if (playSound) {
+				soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
+			}
+		}
+		if (b.bounceWall() && playSound) {
+			soundPool.play(wallSfx, 1, 1, 1, 0, 1);
 		}
 	}
 	

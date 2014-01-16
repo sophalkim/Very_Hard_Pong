@@ -17,8 +17,6 @@ public class Ball extends GameUnit {
 	public float vX;
 	public float vY;
 	int angle;
-	int paddleSfx;
-	int wallSfx;
 	Random r = new Random();
 	
 	public Ball(boolean playSound) {
@@ -29,8 +27,6 @@ public class Ball extends GameUnit {
 		this.playSound = playSound;
 		this.screenW = screenW;
 		this.screenH = screenH;
-		paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
-		wallSfx = soundPool.load(context, R.raw.bounce_wall, 1);
 		bitmap = BitmapFactory.decodeResource(v.getResources(), R.drawable.metal_ball);
 		bitmap = Bitmap.createScaledBitmap(bitmap, screenW / 15, screenH / 20, false);
 		w = bitmap.getWidth();
@@ -68,41 +64,29 @@ public class Ball extends GameUnit {
 	public void update(Canvas canvas) {
 		y += (int) vY;
 		x += (int) vX;
-		bounceWall();
 		rotateBall(canvas);
 	}
 	
 	public void update2(Canvas canvas, Ball b) {
 		y += (int) vY;
 		x += (int) vX;
-		bounceWall2(b);
 		rotateBall(canvas);
 	}
 	
-	public void bounceWall() {
+	public boolean bounceWall() {
 		// Bounce off Top Wall
 		if (y < 0) {
 			vY = (-1) * vY;
-			playWallSfx();
+			return true;
+//			playWallSfx();
 		}	
 		// Bounce off Left/Right Wall
 		if (vX < 0 && x < 0 || vX > 0 && x + w > screenW) {
 			vX = (-1) * vX;
-			playWallSfx();
+			return true;
+//			playWallSfx();
 		}
-	}
-	
-	public void bounceWall2(Ball b) {
-		// Bounce off Top Wall
-		if (y < 0) {
-			vY = (-1) * vY;
-			b.playWallSfx();
-		}	
-		// Bounce off Left/Right Wall
-		if (vX < 0 && x < 0 || vX > 0 && x + w > screenW) {
-			vX = (-1) * vX;
-			b.playWallSfx();
-		}
+		return false;
 	}
 	
 	public boolean bouncePaddle(Paddle p) {
@@ -114,7 +98,7 @@ public class Ball extends GameUnit {
 			} else {
 				vX = screenW / 75;
 			}
-			playPaddleSfx();
+//			playPaddleSfx();
 			return true;
 		}
 		// Bounce off Paddle Middle
@@ -125,7 +109,7 @@ public class Ball extends GameUnit {
 			} else {
 				vX = screenW / 100;
 			}
-			playPaddleSfx();
+//			playPaddleSfx();
 			return true;
 		}
 		// Bounce off Paddle Right Edge
@@ -136,7 +120,7 @@ public class Ball extends GameUnit {
 			} else {
 				vX = screenW / 75;
 			}
-			playPaddleSfx();
+//			playPaddleSfx();
 			return true;
 		}
 		return false;
@@ -145,7 +129,7 @@ public class Ball extends GameUnit {
 	public boolean bouncePaddle2(Paddle p, Ball b) {
 		if (vY > 0 && y + h < p.y + p.h && y + h > p.y && x + w > p.x && x < p.x + p.w) {
 			vY = (-1) * vY;
-			b.playPaddleSfx();
+//			b.playPaddleSfx();
 			return true;
 		}
 		return false;
@@ -169,15 +153,15 @@ public class Ball extends GameUnit {
 		canvas.restore();
 	}
 	
-	public void playPaddleSfx() {
-		if (playSound) {
-			soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
-		}
-	}
+//	public void playPaddleSfx() {
+//		if (playSound) {
+//			soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
+//		}
+//	}
 	
-	public void playWallSfx() {
-		if (playSound) {
-			soundPool.play(wallSfx, 1, 1, 1, 0, 1);
-		}
-	}
+//	public void playWallSfx() {
+//		if (playSound) {
+//			soundPool.play(wallSfx, 1, 1, 1, 0, 1);
+//		}
+//	}
 }
