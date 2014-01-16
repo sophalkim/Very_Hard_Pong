@@ -65,20 +65,14 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	public void winCondition() {
 		if (ballHits == 15) {
 			soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
-			soundPool.release();
-			soundPool = null;
-			thread.setRunning(false);
-			pause = true;
+			onPause();
 			((BaseActivity)getContext()).winScreen();
 		}
 	}
 	
 	public void loseCondition() {
 		if (b.y > (b.screenH - b.h)) {
-			soundPool.release();
-			soundPool = null;
-			thread.setRunning(false);
-			pause = true;
+			onPause();
 			((BaseActivity)getContext()).loseScreen();
 		}
 	}
@@ -136,6 +130,25 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	public void onPause() {
+		if (soundPool != null) {
+			soundPool.release();
+			soundPool = null;
+		}
+		if (thread.getRunning()) {
+			thread.setRunning(false);
+		}
+		pause = true;
+	}
+	
+	public void onResume() {
+		if (soundPool == null) {
+			soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+			paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
+			wallSfx = soundPool.load(context, R.raw.bounce_wall, 1);
 		}
 	}
 }
