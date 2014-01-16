@@ -1,6 +1,7 @@
 package ssk.project.Basic_Pong.Level_Wood;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.GameUnits.LightningBig;
+import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Canvas;
 
@@ -8,9 +9,11 @@ import android.graphics.Canvas;
 public class WoodLevel4 extends WoodLevel3 {
 
 	LightningBig liBig;
+	public int lightningBigSfx;
 	
 	public WoodLevel4(Context context) {
 		super(context);
+		lightningBigSfx = soundPool.load(context, R.raw.big_lightning_sound_effect, 1);
 	}
 	
 	@Override
@@ -22,7 +25,7 @@ public class WoodLevel4 extends WoodLevel3 {
 	@Override
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
-		liBig.update(canvas, p);
+		liBig.update(canvas, p, soundPool, lightningBigSfx);
 	}
 	
 	@Override
