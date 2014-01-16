@@ -652,4 +652,18 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 			}
 		}
 	}
+	
+	public void pauseSound() {
+		if (soundPool != null) {
+			soundPool.release();
+			soundPool = null;
+		}
+	}
+	
+	public void resumeSound() {
+		if (soundPool == null) {
+			soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);	
+			onClickSound = soundPool.load(getContext(), R.raw.synth_organ, 1);
+		}
+	}
 }

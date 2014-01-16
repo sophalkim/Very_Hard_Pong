@@ -2,17 +2,20 @@ package ssk.project.Basic_Pong.Level_Wood;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.GameUnits.Lightning3;
 import ssk.project.GameUnits.PowerUp;
+import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
 public class WoodLevel3 extends WoodLevel2 {
 
+	public int lightningSfx3;
 	Lightning3 li3;
 	PowerUp pu;
 	
 	public WoodLevel3(Context context) {
 		super(context);
+		lightningSfx3 = soundPool.load(context, R.raw.lightning_sound_effect3, 1);
 	}
 	
 	@Override
@@ -38,7 +41,7 @@ public class WoodLevel3 extends WoodLevel2 {
 	@Override
 	public void draw(Canvas canvas) {
 		super.draw(canvas);
-		li3.update(canvas, p);
+		li3.update(canvas, p, soundPool, lightningSfx3);
 		pu.updateShrink(canvas, p);
 	}
 	
