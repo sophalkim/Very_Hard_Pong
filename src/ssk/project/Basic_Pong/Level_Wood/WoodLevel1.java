@@ -14,10 +14,12 @@ public class WoodLevel1 extends BaseLevel {
 
 	Lightning li;
 	WarningText wt;
+	public int lightningSfx;
 	
 	public WoodLevel1(Context context) {
 		super(context);
 		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.wood_flooring_background);
+		lightningSfx = soundPool.load(context, R.raw.lightning_sound_effect, 1);
 	}
 	
 	@Override
@@ -26,13 +28,14 @@ public class WoodLevel1 extends BaseLevel {
 		p.setPaddleBitmap(this, Paddle.WOOD);
 		wt = new WarningText(screenW, screenH);
 		li = new Lightning(this, context, screenW, screenH, playSound);
+		
 	}
 	
 	@Override
 	public void draw(Canvas canvas) {
 		super.draw(canvas);
 		wt.updateText(canvas);
-		li.update(canvas, p);
+		li.update(canvas, p, soundPool, lightningSfx);
 	}
 	
 	@Override
