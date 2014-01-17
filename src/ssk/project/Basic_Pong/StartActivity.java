@@ -66,7 +66,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 		}
 	}
     public void startIce() {
-    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
     	i.putExtra("Level", 1);
     	i.putExtra("Music", 1);
     	i.putExtra("playSound", playSound);
@@ -111,7 +111,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startVolcano2() {
-    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
     	i.putExtra("Level", 6);
     	i.putExtra("Music", 2);
     	i.putExtra("playSound", playSound);
@@ -156,7 +156,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startWood3() {
-    	i = new Intent(StartActivity.this, BaseActivity.class);
+    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
     	i.putExtra("Level", 11);
     	i.putExtra("Music", 3);
     	i.putExtra("playSound", playSound);
