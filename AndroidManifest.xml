@@ -41,7 +41,8 @@
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_3.BeachGameActivity3" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.Basic_Pong.Level_Beach_4.BeachGameActivity4" android:screenOrientation="portrait"></activity>
         <activity android:name="ssk.project.BaseClasses.BaseActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="ssk.project.LoadingScreens.PerimeterAnimals" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.LoadingScreens.BetweenLevelsLoadingScreen" android:screenOrientation="portrait"></activity>
+        <activity android:name="ssk.project.LoadingScreens.TestLoadingScreen" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,8 @@ package ssk.project.Basic_Pong;
 
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;
-import ssk.project.LoadingScreens.PerimeterAnimals;
+import ssk.project.LoadingScreens.BetweenLevelsLoadingScreen;
+import ssk.project.LoadingScreens.TestLoadingScreen;
 import ssk.project.Pong_Basic.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,7 +67,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 		}
 	}
     public void startIce() {
-    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
+    	i = new Intent(StartActivity.this, BetweenLevelsLoadingScreen.class);
     	i.putExtra("Level", 1);
     	i.putExtra("Music", 1);
     	i.putExtra("playSound", playSound);
@@ -111,7 +112,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startVolcano2() {
-    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
+    	i = new Intent(StartActivity.this, BetweenLevelsLoadingScreen.class);
     	i.putExtra("Level", 6);
     	i.putExtra("Music", 2);
     	i.putExtra("playSound", playSound);
@@ -156,7 +157,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startWood3() {
-    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
+    	i = new Intent(StartActivity.this, BetweenLevelsLoadingScreen.class);
     	i.putExtra("Level", 11);
     	i.putExtra("Music", 3);
     	i.putExtra("playSound", playSound);
@@ -174,7 +175,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
     }
     
     public void startBeach1() {
-    	i = new Intent(StartActivity.this, PerimeterAnimals.class);
+    	i = new Intent(StartActivity.this, TestLoadingScreen.class);
     	i.putExtra("Level", 13);
     	i.putExtra("Music", 4);
     	i.putExtra("playSound", playSound);

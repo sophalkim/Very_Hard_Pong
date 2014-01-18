@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_screen">
-</LinearLayout>
+    android:background="@drawable/pong_3d">
+
+    <TextView
+        android:id="@+id/tvVery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="82dp"
+        android:layout_marginTop="120dp"
+        android:textSize="30dp"
+        android:textColor="#090"
+        android:text="Very"/>
+
+    <TextView
+        android:id="@+id/tvHard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvVery"
+        android:layout_below="@+id/tvVery"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="22dp"
+        android:text="Hard"
+        android:textColor="#090"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/tvPong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tvHard"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="18dp"
+        android:text="Pong"
+        android:textColor="#900"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
