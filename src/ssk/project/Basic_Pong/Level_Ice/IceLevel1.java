@@ -25,7 +25,7 @@ public class IceLevel1 extends BaseLevel {
 		
 	public IceLevel1(Context context) {
 		super(context);
-		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
+		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icy_night);
 		iceSfx = soundPool.load(context, R.raw.ice_cracking_sound_effect, 1);
 		solidSfx = soundPool.load(context, R.raw.solid_block_sound_effect, 1);
 	}
@@ -48,7 +48,7 @@ public class IceLevel1 extends BaseLevel {
 			iceBlocks.get(i).update2(canvas, ib);
 		}
 		for (int i = 0; i < iceBlocks.size(); i++) {
-			if (iceBlocks.get(i).bounceBall2(b, ib) && playSound) {
+			if (iceBlocks.get(i).bounceBall2(b, ib) && playSound && soundPool != null) {
 				iceHit++;
 				soundPool.play(iceSfx, 1, 1, 1, 0, 1);
 			}

@@ -56,11 +56,11 @@ public class VolcanoLevel2 extends VolcanoLevel1 {
 			b3.update2(canvas, b);
 			if (b3.bouncePaddle2(p, b)) {
 				ballHits++;
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
 				}
 			}
-			if (b3.bounceWall() && playSound) {
+			if (b3.bounceWall() && playSound && soundPool != null) {
 				soundPool.play(wallSfx, 1, 1, 1, 0, 1);
 			}
 		}

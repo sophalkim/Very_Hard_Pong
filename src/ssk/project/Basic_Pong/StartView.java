@@ -123,7 +123,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		background = BitmapFactory.decodeResource(getResources(), R.drawable.start_background_image);
 		background = Bitmap.createScaledBitmap(background, screenWidth, screenHeight, false);
 		
-		iceCave = BitmapFactory.decodeResource(getResources(), R.drawable.ice_cave);
+		iceCave = BitmapFactory.decodeResource(getResources(), R.drawable.icy_night);
 		iceCave = Bitmap.createScaledBitmap(iceCave, screenWidth / 3 + screenWidth / 12, screenHeight / 3 + screenHeight / 12, false);
 		iceCaveWidth = iceCave.getWidth();
 		iceCaveHeight = iceCave.getHeight();
@@ -324,7 +324,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave
 		if (iceCaveSelected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -343,7 +343,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave 2
 		if (iceCave2Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -362,7 +362,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave 3
 		if (iceCave3Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -381,7 +381,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for IceCave 4
 		if (iceCave4Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -400,7 +400,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano
 		if (volcanoSelected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -419,7 +419,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano 2
 		if (volcano2Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -438,7 +438,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano 3
 		if (volcano3Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -457,7 +457,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Volcano 4
 		if (volcano4Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -476,7 +476,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 
 		if (woodSelected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -495,7 +495,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 2
 		if (wood2Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -514,7 +514,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 3
 		if (wood3Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -533,7 +533,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Wood 4
 		if (wood4Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -552,7 +552,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach
 		if (beachSelected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -571,7 +571,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach 2
 		if (beach2Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -590,7 +590,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach 3
 		if (beach3Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}
@@ -609,7 +609,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		// Animation for Beach 3
 		if (beach4Selected) {
 			if (scaleX == 0) {
-				if (playSound) {
+				if (playSound && soundPool != null) {
 					soundPool.play(onClickSound, 1, 1, 1, 0, 1);
 				}
 			}

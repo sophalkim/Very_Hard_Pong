@@ -3,6 +3,7 @@ import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.BaseClasses.BaseLevel;
 import ssk.project.GameUnits.Lightning;
 import ssk.project.GameUnits.Paddle;
+import ssk.project.GameUnits.ScrollingBackground;
 import ssk.project.GameUnits.WarningText;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
@@ -14,6 +15,7 @@ public class WoodLevel1 extends BaseLevel {
 
 	Lightning li;
 	WarningText wt;
+	ScrollingBackground scrollB;
 	public int lightningSfx;
 	
 	public WoodLevel1(Context context) {
@@ -28,12 +30,17 @@ public class WoodLevel1 extends BaseLevel {
 		p.setPaddleBitmap(this, Paddle.WOOD);
 		wt = new WarningText(screenW, screenH);
 		li = new Lightning(this, context, screenW, screenH, playSound);
-		
+		scrollB = new ScrollingBackground(bgBitmap, w, h);
 	}
 	
 	@Override
 	public void draw(Canvas canvas) {
-		super.draw(canvas);
+		scrollB.update(canvas);
+		winCondition();
+		loseCondition();
+		gt.updateText(canvas, screenW, screenH, ballHits);
+		p.update(canvas);
+		updateBall(canvas);
 		wt.updateText(canvas);
 		li.update(canvas, p, soundPool, lightningSfx);
 	}

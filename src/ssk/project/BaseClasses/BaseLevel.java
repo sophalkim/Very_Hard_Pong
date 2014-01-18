@@ -81,11 +81,11 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		b.update(canvas);
 		if (b.bouncePaddle(p)) {
 			ballHits++;
-			if (playSound) {
+			if (playSound && soundPool != null) {
 				soundPool.play(paddleSfx, 1, 1, 1, 0, 1);
 			}
 		}
-		if (b.bounceWall() && playSound) {
+		if (b.bounceWall() && playSound && soundPool != null) {
 			soundPool.play(wallSfx, 1, 1, 1, 0, 1);
 		}
 	}
