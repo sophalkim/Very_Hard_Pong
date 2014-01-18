@@ -2,6 +2,7 @@ package ssk.project.Basic_Pong.Level_Volcano;
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.BaseClasses.BaseLevel;
 import ssk.project.GameUnits.Ball;
+import ssk.project.GameUnits.Cloud;
 import ssk.project.GameUnits.Paddle;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,6 +11,7 @@ import android.graphics.Canvas;
 public class VolcanoLevel1 extends BaseLevel {
 
 	Ball b2;
+	Cloud cloud;
 	boolean ball2Start = false;
 	
 	public VolcanoLevel1(Context context) {
@@ -20,6 +22,7 @@ public class VolcanoLevel1 extends BaseLevel {
 		super.onSizeChanged(w, h, oldw, oldh);
 		gt.setVolcanoLevel(30);
 		p.setPaddleBitmap(this, Paddle.VOLCANO);
+		cloud = new Cloud(this, w, h);
 	}
 	
 	public void levelEvent() {
@@ -71,6 +74,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	public void draw(Canvas canvas) {
 		super.draw(canvas);	
 		levelEvent();
+		cloud.update(canvas);
 	}
 	
 }
