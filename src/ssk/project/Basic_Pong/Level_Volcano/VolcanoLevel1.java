@@ -12,6 +12,7 @@ public class VolcanoLevel1 extends BaseLevel {
 
 	Ball b2;
 	Cloud cloud;
+	Cloud cloud2;
 	boolean ball2Start = false;
 	
 	public VolcanoLevel1(Context context) {
@@ -23,6 +24,8 @@ public class VolcanoLevel1 extends BaseLevel {
 		gt.setVolcanoLevel(30);
 		p.setPaddleBitmap(this, Paddle.VOLCANO);
 		cloud = new Cloud(this, w, h);
+		cloud2 = new Cloud(this, w, h);
+		cloud2.setSecondCloud();
 	}
 	
 	public void levelEvent() {
@@ -75,6 +78,7 @@ public class VolcanoLevel1 extends BaseLevel {
 		super.draw(canvas);	
 		levelEvent();
 		cloud.update(canvas);
+		cloud2.update(canvas);
 	}
 	
 }
