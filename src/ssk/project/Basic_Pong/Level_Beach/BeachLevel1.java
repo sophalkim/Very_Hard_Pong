@@ -12,7 +12,7 @@ public class BeachLevel1 extends BaseLevel {
 
 	public BeachLevel1(Context context) {
 		super(context);
-		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.beach_background);
+		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.beach2);
 	}
 	
 	@Override

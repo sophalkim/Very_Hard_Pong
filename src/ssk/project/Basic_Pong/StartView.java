@@ -130,7 +130,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		iceCaveX = (screenWidth / 24);
 		iceCaveY = (screenHeight / 24);
 		
-		volcano = BitmapFactory.decodeResource(getResources(), R.drawable.volcano);
+		volcano = BitmapFactory.decodeResource(getResources(), R.drawable.rolling_hills);
 		volcano = Bitmap.createScaledBitmap(volcano, screenWidth / 3 + screenWidth / 12, screenHeight / 3 + screenHeight / 12, false);
 		volcanoWidth = volcano.getWidth();
 		volcanoHeight = volcano.getHeight();
@@ -144,7 +144,7 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		woodX = (screenWidth / 24);
 		woodY = (screenHeight / 24) + (screenHeight / 2);
 		
-		beach = BitmapFactory.decodeResource(getResources(), R.drawable.beach_background);
+		beach = BitmapFactory.decodeResource(getResources(), R.drawable.beach2);
 		beach = Bitmap.createScaledBitmap(beach, screenWidth / 3 + screenWidth / 12, screenHeight / 3 + screenHeight / 12, false);
 		beachWidth = beach.getWidth();
 		beachHeight = beach.getHeight();
