@@ -39,7 +39,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 	public BaseLevel(Context context) {
 		super(context);
 		this.context = context;
-		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.volcano);
+		bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.rolling_hills);
 		getHolder().addCallback(this);
 		setFocusable(true);
 		
