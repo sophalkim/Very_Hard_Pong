@@ -200,15 +200,15 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	 					iceCaveSelected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= iceCaveX + iceCaveWidth / 2 && x <= iceCaveX + iceCaveWidth && y >= iceCaveY && y <= iceCaveY + iceCaveHeight / 2) {
+					if (!iceLock2 && x >= iceCaveX + iceCaveWidth / 2 && x <= iceCaveX + iceCaveWidth && y >= iceCaveY && y <= iceCaveY + iceCaveHeight / 2) {
 						iceCave2Selected = true;
 	 					levelSelected = true;
 					}
-					if (x >= iceCaveX && x <= iceCaveX + iceCaveWidth / 2 && y >= iceCaveY + iceCaveHeight / 2 && y <= iceCaveY + iceCaveHeight) {
+					if (!iceLock3 && x >= iceCaveX && x <= iceCaveX + iceCaveWidth / 2 && y >= iceCaveY + iceCaveHeight / 2 && y <= iceCaveY + iceCaveHeight) {
 	 					iceCave3Selected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= iceCaveX + iceCaveWidth / 2 && x <= iceCaveX + iceCaveWidth && y >= iceCaveY + iceCaveHeight / 2 && y <= iceCaveY + iceCaveHeight) {
+					if (!iceLock4 && x >= iceCaveX + iceCaveWidth / 2 && x <= iceCaveX + iceCaveWidth && y >= iceCaveY + iceCaveHeight / 2 && y <= iceCaveY + iceCaveHeight) {
 	 					iceCave4Selected = true;
 	 					levelSelected = true;
 	 				}
@@ -217,15 +217,15 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	 					volcanoSelected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= volcanoX + volcanoWidth / 2 && x <= volcanoX + volcanoWidth && y >= volcanoY && y <= volcanoY + volcanoHeight / 2) {
+					if (!volcanoLock2 && x >= volcanoX + volcanoWidth / 2 && x <= volcanoX + volcanoWidth && y >= volcanoY && y <= volcanoY + volcanoHeight / 2) {
 						volcano2Selected = true;
 	 					levelSelected = true;
 					}
-					if (x >= volcanoX && x <= volcanoX + volcanoWidth / 2 && y >= volcanoY + volcanoHeight / 2 && y <= volcanoY + volcanoHeight) {
+					if (!volcanoLock3 && x >= volcanoX && x <= volcanoX + volcanoWidth / 2 && y >= volcanoY + volcanoHeight / 2 && y <= volcanoY + volcanoHeight) {
 	 					volcano3Selected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= volcanoX + volcanoWidth / 2 && x <= volcanoX + volcanoWidth && y >= volcanoY + volcanoHeight / 2 && y <= volcanoY + volcanoHeight) {
+					if (!volcanoLock4 && x >= volcanoX + volcanoWidth / 2 && x <= volcanoX + volcanoWidth && y >= volcanoY + volcanoHeight / 2 && y <= volcanoY + volcanoHeight) {
 	 					volcano4Selected = true;
 	 					levelSelected = true;
 	 				}
@@ -234,15 +234,15 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	 					woodSelected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= woodX + woodWidth / 2 && x <= woodX + woodWidth && y >= woodY && y <= woodY + woodHeight / 2) {
+					if (!woodLock2 && x >= woodX + woodWidth / 2 && x <= woodX + woodWidth && y >= woodY && y <= woodY + woodHeight / 2) {
 						wood2Selected = true;
 	 					levelSelected = true;
 					}
-					if (x >= woodX && x <= woodX + woodWidth / 2 && y >= woodY + woodHeight / 2 && y <= woodY + woodHeight) {
+					if (!woodLock3 && x >= woodX && x <= woodX + woodWidth / 2 && y >= woodY + woodHeight / 2 && y <= woodY + woodHeight) {
 	 					wood3Selected = true;
 	 					levelSelected = true;
 	 				}
-					if (x >= woodX + woodWidth / 2 && x <= woodX + woodWidth && y >= woodY + woodHeight / 2 && y <= woodY + woodHeight) {
+					if (!woodLock4 && x >= woodX + woodWidth / 2 && x <= woodX + woodWidth && y >= woodY + woodHeight / 2 && y <= woodY + woodHeight) {
 	 					wood4Selected = true;
 	 					levelSelected = true;
 	 				}
@@ -302,19 +302,31 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 			canvas.drawText("2", volcanoX + volcanoWidth - volcanoWidth / 4, volcanoY + volcanoHeight / 3, levelPaint);
 			canvas.drawText("3", volcanoX + volcanoWidth / 4, volcanoY + volcanoHeight - volcanoHeight / 6, levelPaint);
 			canvas.drawText("4", volcanoX + volcanoWidth - volcanoWidth / 4, volcanoY + volcanoHeight - volcanoHeight / 6, levelPaint);
-			canvas.drawBitmap(lockBitmap, volcanoX + volcanoWidth - volcanoWidth / 3 - volcanoWidth / 24, volcanoY + volcanoHeight / 8, null);
-			canvas.drawBitmap(lockBitmap, volcanoX + volcanoWidth / 6 - volcanoWidth / 24, volcanoY + volcanoHeight - volcanoHeight / 3 - volcanoHeight / 16, null);
-			canvas.drawBitmap(lockBitmap, volcanoX + volcanoWidth - volcanoWidth / 3 - volcanoWidth / 24, volcanoY + volcanoHeight - volcanoHeight / 3 - volcanoHeight / 16, null);	
-			// Drawing Wood Level, number, and locks
+			if (volcanoLock2) {
+				canvas.drawBitmap(lockBitmap, volcanoX + volcanoWidth - volcanoWidth / 3 - volcanoWidth / 24, volcanoY + volcanoHeight / 8, null);
+			}
+			if (volcanoLock3) {
+				canvas.drawBitmap(lockBitmap, volcanoX + volcanoWidth / 6 - volcanoWidth / 24, volcanoY + volcanoHeight - volcanoHeight / 3 - volcanoHeight / 16, null);
+			}
+			if (volcanoLock4) {
+				canvas.drawBitmap(lockBitmap, volcanoX + volcanoWidth - volcanoWidth / 3 - volcanoWidth / 24, volcanoY + volcanoHeight - volcanoHeight / 3 - volcanoHeight / 16, null);	
+			}
+				// Drawing Wood Level, number, and locks
 			canvas.drawBitmap(wood, woodX, woodY, null);
 			canvas.drawText("1", woodX + woodWidth / 4, woodY + woodHeight / 3, levelPaint);
 			canvas.drawText("2", woodX + woodWidth - woodWidth / 4, woodY + woodHeight / 3, levelPaint);
 			canvas.drawText("3", woodX + woodWidth / 4, woodY + woodHeight - woodHeight / 6, levelPaint);
 			canvas.drawText("4", woodX + woodWidth - woodWidth / 4, woodY + woodHeight - woodHeight / 6, levelPaint);
-			canvas.drawBitmap(lockBitmap, woodX + woodWidth - woodWidth / 3 - woodWidth / 24, woodY + woodHeight / 8, null);
-			canvas.drawBitmap(lockBitmap, woodX + woodWidth / 6 - woodWidth / 24, woodY + woodHeight - woodHeight / 3 - woodHeight / 16, null);
-			canvas.drawBitmap(lockBitmap, woodX + woodWidth - woodWidth / 3 - woodWidth / 24, woodY + woodHeight - woodHeight / 3 - woodHeight / 16, null);
-			// Drawing Beach Level, number, and locks
+			if (woodLock2) {
+				canvas.drawBitmap(lockBitmap, woodX + woodWidth - woodWidth / 3 - woodWidth / 24, woodY + woodHeight / 8, null);
+			}
+			if (woodLock3) {
+				canvas.drawBitmap(lockBitmap, woodX + woodWidth / 6 - woodWidth / 24, woodY + woodHeight - woodHeight / 3 - woodHeight / 16, null);
+			}
+			if (woodLock4) {
+				canvas.drawBitmap(lockBitmap, woodX + woodWidth - woodWidth / 3 - woodWidth / 24, woodY + woodHeight - woodHeight / 3 - woodHeight / 16, null);
+			}
+				// Drawing Beach Level, number, and locks
 			canvas.drawBitmap(beach, beachX, beachY, null);
 			// BeachBall
 			canvas.drawBitmap(beachballBitmap, (beachX + (beachWidth / 2)  - (beachballBitmap.getWidth() / 2)), (beachY + (beachHeight / 4) - beachballBitmap.getHeight() / 2), null);
