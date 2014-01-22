@@ -56,6 +56,7 @@ public class StartActivity extends FragmentActivity implements AudioPreferences.
 	public void onResume() {
 		super.onResume();
 		gameView.resumeSound();
+		gameView.onResume();
 	} 
     
     @Override

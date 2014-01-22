@@ -14,6 +14,7 @@ import android.graphics.Rect;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -97,6 +98,15 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	SharedPreferences sp;
 	boolean playSound = true;
+	boolean iceLock2 = true;
+	boolean iceLock3 = true;
+	boolean iceLock4 = true;
+	boolean volcanoLock2 = true;
+	boolean volcanoLock3 = true;
+	boolean volcanoLock4 = true;
+	boolean woodLock2 = true;
+	boolean woodLock3 = true;
+	boolean woodLock4 = true;
 	
 	public StartView(Context context) {
 		super(context);
@@ -106,14 +116,12 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 		setFocusable(true);
 		velocityX = 10;
 		velocityY = 10;
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-		playSound = sp.getBoolean("SOUND", true);
 	}
 	
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		
+		Log.d("StartView", "StartView just onSizeChanged");
 		screenWidth = w;
 		screenHeight = h;
 		
@@ -665,5 +673,21 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 			soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);	
 			onClickSound = soundPool.load(getContext(), R.raw.synth_organ, 1);
 		}
+	}
+	
+	public void onResume() {
+		Log.d("StartView", "StartView has just resumed");
+		sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+		playSound = sp.getBoolean("SOUND", true);
+		iceLock2 = sp.getBoolean("iceLock2", true);
+		iceLock3 = sp.getBoolean("iceLock3", true);
+		iceLock4 = sp.getBoolean("iceLock4", true);
+		volcanoLock2 = sp.getBoolean("volcanoLock2", true);
+		volcanoLock3 = sp.getBoolean("volcanoLock3", true);
+		volcanoLock4 = sp.getBoolean("volcanoLock4", true);
+		woodLock2 = sp.getBoolean("woodLock2", true);
+		woodLock3 = sp.getBoolean("woodLock3", true);
+		woodLock4 = sp.getBoolean("woodLock4", true);
+		Log.d("StartView", "IceLock3 is " + iceLock3);
 	}
 }
