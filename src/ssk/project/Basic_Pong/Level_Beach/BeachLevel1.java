@@ -5,10 +5,7 @@ import ssk.project.GameUnits.Ball;
 import ssk.project.GameUnits.Paddle;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
-import android.preference.PreferenceManager;
 
 
 public class BeachLevel1 extends BaseLevel {
@@ -36,13 +33,6 @@ public class BeachLevel1 extends BaseLevel {
 			savePreferences("iceLock4", false);
 			((BaseActivity)getContext()).winScreen();
 		}
-	}
-	
-	public void savePreferences(String key, boolean value) {
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-		Editor edit = sp.edit();
-		edit.putBoolean(key, value);
-		edit.commit();
 	}
 	
 }

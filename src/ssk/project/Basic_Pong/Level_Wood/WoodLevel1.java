@@ -55,4 +55,14 @@ public class WoodLevel1 extends BaseLevel {
 		}
 	}
 	
+	@Override
+	public void winCondition() {
+		if (ballHits == 15) {
+			thread.setRunning(false);
+			pause = true;
+			savePreferences("woodLock2", false);
+			((BaseActivity)getContext()).winScreen();
+		}
+	}
+	
 }

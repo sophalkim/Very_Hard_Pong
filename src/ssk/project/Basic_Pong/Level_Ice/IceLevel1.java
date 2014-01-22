@@ -70,6 +70,7 @@ public class IceLevel1 extends BaseLevel {
 		if (iceHit == iceblockQuantity * 2) {
 			thread.setRunning(false);
 			pause = true;
+			savePreferences("iceLock2", false);
 			((BaseActivity)getContext()).winScreen();
 		}
 	}

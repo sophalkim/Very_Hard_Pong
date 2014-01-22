@@ -33,6 +33,7 @@ public class VolcanoLevel3 extends VolcanoLevel2 {
 		if (ballHits == 150) {
 			thread.setRunning(false);
 			pause = true;
+			savePreferences("volcanoLock4", false);
 			((BaseActivity)getContext()).winScreen();
 		}
 	}

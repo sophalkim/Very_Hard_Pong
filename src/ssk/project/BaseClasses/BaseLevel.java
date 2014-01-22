@@ -6,6 +6,7 @@ import ssk.project.GameUnits.Paddle;
 import ssk.project.Pong_Basic.R;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -150,5 +151,12 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 			paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
 			wallSfx = soundPool.load(context, R.raw.bounce_wall, 1);
 		}
+	}
+	
+	public void savePreferences(String key, boolean value) {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+		Editor edit = sp.edit();
+		edit.putBoolean(key, value);
+		edit.commit();
 	}
 }
