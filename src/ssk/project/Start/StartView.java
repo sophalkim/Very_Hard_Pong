@@ -287,10 +287,16 @@ public class StartView extends SurfaceView implements SurfaceHolder.Callback {
 			canvas.drawText("2", iceCaveX + iceCaveWidth - iceCaveWidth / 4, iceCaveY + iceCaveHeight / 3, levelPaint);
 			canvas.drawText("3", iceCaveX + iceCaveWidth / 4, iceCaveY + iceCaveHeight - iceCaveHeight / 6, levelPaint);
 			canvas.drawText("4", iceCaveX + iceCaveWidth - iceCaveWidth / 4, iceCaveY + iceCaveHeight - iceCaveHeight / 6, levelPaint);
-			canvas.drawBitmap(lockBitmap, iceCaveX + iceCaveWidth - iceCaveWidth / 3 - iceCaveWidth / 24, iceCaveY + iceCaveHeight / 8, null);
-			canvas.drawBitmap(lockBitmap, iceCaveX + iceCaveWidth / 6 - iceCaveWidth / 24, iceCaveY + iceCaveHeight - iceCaveHeight / 3 - iceCaveHeight / 16, null);
-			canvas.drawBitmap(lockBitmap, iceCaveX + iceCaveWidth - iceCaveWidth / 3 - iceCaveWidth / 24, iceCaveY + iceCaveHeight - iceCaveHeight / 3 - iceCaveHeight / 16, null);
-			// Drawing Volcano Level, number, and locks
+			if (iceLock2) {
+				canvas.drawBitmap(lockBitmap, iceCaveX + iceCaveWidth - iceCaveWidth / 3 - iceCaveWidth / 24, iceCaveY + iceCaveHeight / 8, null);
+			}
+			if (iceLock3) {
+				canvas.drawBitmap(lockBitmap, iceCaveX + iceCaveWidth / 6 - iceCaveWidth / 24, iceCaveY + iceCaveHeight - iceCaveHeight / 3 - iceCaveHeight / 16, null);
+			}
+			if (iceLock4) {
+				canvas.drawBitmap(lockBitmap, iceCaveX + iceCaveWidth - iceCaveWidth / 3 - iceCaveWidth / 24, iceCaveY + iceCaveHeight - iceCaveHeight / 3 - iceCaveHeight / 16, null);
+			}
+				// Drawing Volcano Level, number, and locks
 			canvas.drawBitmap(volcano, volcanoX, volcanoY, null);
 			canvas.drawText("1", volcanoX + volcanoWidth / 4, volcanoY + volcanoHeight / 3, levelPaint);
 			canvas.drawText("2", volcanoX + volcanoWidth - volcanoWidth / 4, volcanoY + volcanoHeight / 3, levelPaint);

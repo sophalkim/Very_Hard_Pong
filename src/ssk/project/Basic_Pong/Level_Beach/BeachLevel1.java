@@ -33,6 +33,7 @@ public class BeachLevel1 extends BaseLevel {
 			pause = true;
 			savePreferences("iceLock2", false);
 			savePreferences("iceLock3", false);
+			savePreferences("iceLock4", false);
 			((BaseActivity)getContext()).winScreen();
 		}
 	}
