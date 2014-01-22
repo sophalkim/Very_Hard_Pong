@@ -1,4 +1,4 @@
-package ssk.project.Basic_Pong;
+package ssk.project.Start;
 
 import ssk.project.BaseClasses.BaseThread;
 import ssk.project.Pong_Basic.R;

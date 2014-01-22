@@ -1,5 +1,5 @@
 
-package ssk.project.Basic_Pong;
+package ssk.project.Start;
 
 import ssk.project.BaseClasses.BaseActivity;
 import ssk.project.Basic_Pong.DialogScreens.AudioPreferences;

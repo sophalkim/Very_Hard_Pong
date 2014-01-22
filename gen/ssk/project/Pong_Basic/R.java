@@ -105,8 +105,10 @@ public final class R {
         public static final int win_background=0x7f02002b;
         public static final int win_layout_background=0x7f02002c;
         public static final int winbackground2=0x7f02002d;
-        public static final int wood_flooring_background=0x7f02002e;
-        public static final int yellow_dot_button=0x7f02002f;
+        public static final int wood_background_long=0x7f02002e;
+        public static final int wood_flooring_background=0x7f02002f;
+        public static final int wood_flooring_background_small=0x7f020030;
+        public static final int yellow_dot_button=0x7f020031;
     }
     public static final class id {
         public static final int audiobackbutton=0x7f090004;
