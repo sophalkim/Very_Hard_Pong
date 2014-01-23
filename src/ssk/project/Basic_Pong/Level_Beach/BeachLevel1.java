@@ -28,9 +28,6 @@ public class BeachLevel1 extends BaseLevel {
 		if (ballHits == 2) {
 			thread.setRunning(false);
 			pause = true;
-			savePreferences("iceLock2", false);
-			savePreferences("iceLock3", false);
-			savePreferences("iceLock4", false);
 			((BaseActivity)getContext()).winScreen();
 		}
 	}
