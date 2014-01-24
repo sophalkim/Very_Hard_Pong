@@ -16,7 +16,7 @@ public class VolcanoLevel3 extends VolcanoLevel2 {
 	
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		gt.setVolcanoLevel(150);
+		gt.setGoal(150);
 	}
 	
 	@Override

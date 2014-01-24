@@ -21,7 +21,7 @@ public class VolcanoLevel1 extends BaseLevel {
 	
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		gt.setVolcanoLevel(30);
+		gt.setGoal(30);
 		p.setPaddleBitmap(this, Paddle.VOLCANO);
 		cloud = new Cloud(this, w, h);
 		cloud2 = new Cloud(this, w, h);

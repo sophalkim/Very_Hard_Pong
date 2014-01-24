@@ -19,6 +19,7 @@ public class WoodLevel4 extends WoodLevel3 {
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
+		gt.setGoal(60);
 		liBig = new LightningBig(this, context, screenW, screenH, playSound);
 	}
 	
@@ -35,6 +36,15 @@ public class WoodLevel4 extends WoodLevel3 {
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).loseScreen();
+		}
+	}
+	
+	@Override
+	public void winCondition() {
+		if (ballHits == 60) {
+			thread.setRunning(false);
+			pause = true;
+			((BaseActivity)getContext()).winScreen();
 		}
 	}
 	

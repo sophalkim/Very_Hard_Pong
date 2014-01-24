@@ -21,6 +21,7 @@ public class WoodLevel3 extends WoodLevel2 {
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
+		gt.setGoal(50);
 		li3 = new Lightning3(this, context, screenW, screenH, playSound);
 		pu = new PowerUp(this, context, screenW, screenH, playSound);
 	}

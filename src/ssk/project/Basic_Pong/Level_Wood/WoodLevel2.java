@@ -18,6 +18,7 @@ public class WoodLevel2 extends WoodLevel1 {
 	@Override
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
+		gt.setGoal(30);
 		li2 = new Lightning2(this, context, screenW, screenH, playSound);
 		lightningSfx2 = soundPool.load(context, R.raw.lightning_sound_effect2, 1);
 	}

@@ -19,7 +19,7 @@ public class VolcanoLevel4 extends VolcanoLevel3 {
 	
 	public void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
-		gt.setVolcanoLevel(250);
+		gt.setGoal(250);
 		pu = new PowerUp(this, context, screenW, screenH, playSound);
 	}
 	
