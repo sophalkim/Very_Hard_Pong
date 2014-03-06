@@ -25,7 +25,7 @@ public class BeachLevel1 extends BaseLevel {
 	
 	@Override
 	public void winCondition() {
-		if (ballHits == 2) {
+		if (ballHits == 1000) {
 			thread.setRunning(false);
 			pause = true;
 			((BaseActivity)getContext()).winScreen();
