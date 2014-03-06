@@ -48,7 +48,7 @@ public class BaseLevel extends SurfaceView implements SurfaceHolder.Callback {
 		playSound = sp.getBoolean("SOUND", true);
 		
 		soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
-		paddleSfx = soundPool.load(context, R.raw.bounce_paddle, 1);
+		paddleSfx = soundPool.load(context, R.raw.bounce_paddle2, 1);
 		wallSfx = soundPool.load(context, R.raw.bounce_wall, 1);
 	}
 	

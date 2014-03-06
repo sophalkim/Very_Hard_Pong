@@ -61,7 +61,7 @@ public class WoodLevel3 extends WoodLevel2 {
 		if (ballHits == 50) {
 			thread.setRunning(false);
 			pause = true;
-			savePreferences("volcanoLock4", false);
+			savePreferences("woodLock4", false);
 			((BaseActivity)getContext()).winScreen();
 		}
 	}
